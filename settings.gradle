@@ -1,0 +1,6 @@
+rootProject.name = 'rental-management-docker'
+include 'api-gateway'
+include 'room-service'
+include 'booking-service'
+include 'customer-service'
+include 'eureka-server'
