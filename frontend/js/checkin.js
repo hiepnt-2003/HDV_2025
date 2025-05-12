@@ -133,33 +133,40 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     // Load danh sách phòng trống
-    const loadAvailableRooms = async (selectElement) => {
-        try {
-            const rooms = await API.getAvailableRooms();
-            
-            selectElement.innerHTML = '<option value="" selected disabled>-- Chọn phòng --</option>';
-            
-            if (rooms && rooms.length > 0) {
-                rooms.forEach(room => {
-                    const option = document.createElement('option');
-                    option.value = room.id;
-                    option.textContent = `${room.roomNumber} - ${room.roomTypeName} - ${formatCurrency(room.monthlyPrice)}`;
-                    option.dataset.roomNumber = room.roomNumber;
-                    option.dataset.roomType = room.roomTypeName;
-                    option.dataset.price = room.monthlyPrice;
-                    selectElement.appendChild(option);
-                });
-                return true;
-            } else {
-                alert('Không có phòng trống nào khả dụng.');
-                return false;
-            }
-        } catch (error) {
-            console.error('Error loading available rooms:', error);
-            alert('Lỗi khi tải danh sách phòng trống. Vui lòng thử lại sau.');
+const loadAvailableRooms = async (selectElement) => {
+    try {
+        const rooms = await API.getAvailableRooms();
+        
+        selectElement.innerHTML = '<option value="" selected disabled>-- Chọn phòng --</option>';
+        
+        if (rooms && rooms.length > 0) {
+            rooms.forEach(room => {
+                // Lấy tên loại phòng từ đối tượng roomType
+                const roomTypeName = room.roomType?.name || "Chưa phân loại";
+                
+                const option = document.createElement('option');
+                option.value = room.id;
+                option.textContent = `${room.roomNumber} - ${roomTypeName} - ${formatCurrency(room.monthlyPrice)}`;
+                option.dataset.roomNumber = room.roomNumber;
+                option.dataset.roomType = roomTypeName;
+                option.dataset.price = room.monthlyPrice;
+                
+                // Lưu id của loại phòng nếu cần
+                option.dataset.roomTypeId = room.roomType?.id;
+                
+                selectElement.appendChild(option);
+            });
+            return true;
+        } else {
+            alert('Không có phòng trống nào khả dụng.');
             return false;
         }
-    };
+    } catch (error) {
+        console.error('Error loading available rooms:', error);
+        alert('Lỗi khi tải danh sách phòng trống. Vui lòng thử lại sau.');
+        return false;
+    }
+};
     
     // Tạo đặt phòng mới
     const createBooking = async (bookingData) => {
