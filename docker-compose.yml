@@ -1,16 +1,197 @@
 version: '3.8'
 services:
-  service-a:
-    build: ./services/service-a
+  # Database services
+  mysql-customer:
+    image: mysql:8.0
+    container_name: mysql-customer
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: customer_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "5001:5000"
+      - "3306:3306"
+    volumes:
+      - mysql-customer-data:/var/lib/mysql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql
+      - ./scripts/customer-data.sql:/docker-entrypoint-initdb.d/02-customer-data.sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    networks:
+      - rental-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 30s
+      timeout: 20s
+      retries: 10
+      start_period: 120s  # Tăng thời gian khởi động lên 2 phút
 
-  service-b:
-    build: ./services/service-b
+  mysql-room:
+    image: mysql:8.0
+    container_name: mysql-room
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=room_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - mysql-room-data:/var/lib/mysql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql
+      - ./scripts/room-data.sql:/docker-entrypoint-initdb.d/02-room-data.sql
+    restart: always
     ports:
-      - "5002:5000"
+      - "3307:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -prootpassword || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - rental-network
 
-  gateway:
-    build: ./gateway
+  mysql-booking:
+    image: mysql:8.0
+    container_name: mysql-booking
+    environment:
+      MYSQL_DATABASE: booking_db
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "8080:8000"
+      - "3308:3306"
+    volumes:
+      - mysql-booking-data:/var/lib/mysql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql
+      - ./scripts/booking-data.sql:/docker-entrypoint-initdb.d/02-booking-data.sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    networks:
+      - rental-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Service Discovery
+  eureka-server:
+    build: ./eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - rental-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:8761/eureka/apps"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # API Gateway
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - rental-network
+
+  # Microservices
+  customer-service:
+    build: ./services/customer-service
+    container_name: customer-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-customer:3306/customer_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_CHARACTERENCODING=utf8
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_CHARSET=utf8
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_USEUNICODE=true
+      - SPRING_HTTP_ENCODING_CHARSET=UTF-8
+      - SPRING_HTTP_ENCODING_ENABLED=true
+      - SPRING_HTTP_ENCODING_FORCE=true
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      mysql-customer:
+        condition: service_healthy
+    networks:
+      - rental-network
+
+  room-service:
+    build: ./services/room-service
+    container_name: room-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-room:3306/room_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_CHARACTERENCODING=utf8
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_CHARSET=utf8
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_USEUNICODE=true
+      - SPRING_HTTP_ENCODING_CHARSET=UTF-8
+      - SPRING_HTTP_ENCODING_ENABLED=true
+      - SPRING_HTTP_ENCODING_FORCE=true
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      mysql-room:
+        condition: service_healthy
+    networks:
+      - rental-network
+
+  booking-service:
+    build: ./services/booking-service
+    container_name: booking-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-booking:3306/booking_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_CHARACTERENCODING=utf8
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_CHARSET=utf8
+      - SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_USEUNICODE=true
+      - SPRING_HTTP_ENCODING_CHARSET=UTF-8
+      - SPRING_HTTP_ENCODING_ENABLED=true
+      - SPRING_HTTP_ENCODING_FORCE=true
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      mysql-booking:
+        condition: service_healthy
+      customer-service:
+        condition: service_started
+      room-service:
+        condition: service_started
+    networks:
+      - rental-network
+
+  # Frontend
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - rental-network
+
+networks:
+  rental-network:
+    driver: bridge
+
+volumes:
+  mysql-customer-data:
+  mysql-room-data:
+  mysql-booking-data:

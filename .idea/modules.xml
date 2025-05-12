@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/services/booking-service/rental-management-docker.services.booking-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/services/booking-service/rental-management-docker.services.booking-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/services/customer-service/rental-management-docker.services.customer-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/services/customer-service/rental-management-docker.services.customer-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/services/room-service/rental-management-docker.services.room-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/services/room-service/rental-management-docker.services.room-service.main.iml" />
+    </modules>
+  </component>
+</project>
