@@ -15,6 +15,9 @@
 @rem
 
 @if "%DEBUG%" == "" @echo off
+@rem Force Gradle to use JDK 17
+set JAVA_HOME=D:\jdk-17.0.7+7
+set PATH=%JAVA_HOME%\bin;%PATH%
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows

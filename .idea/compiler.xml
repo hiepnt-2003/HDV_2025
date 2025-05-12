@@ -11,6 +11,8 @@
         <module name="rental-management-docker.service.room-service.main" />
         <module name="rental-management-docker.service.main" />
         <module name="rental-management-docker.service.customer-service.main" />
+        <module name="rental-management-docker.api-gateway.main" />
+        <module name="rental-management-docker.eureka-server.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
