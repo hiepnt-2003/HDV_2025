@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/booking-service/rental-management-docker.service.booking-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/booking-service/rental-management-docker.service.booking-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/customer-service/rental-management-docker.service.customer-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/customer-service/rental-management-docker.service.customer-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/room-service/rental-management-docker.service.room-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/room-service/rental-management-docker.service.room-service.main.iml" />
     </modules>
   </component>
 </project>
