@@ -1,108 +1,108 @@
-Database:
--- customer_db.sql
-CREATE DATABASE IF NOT EXISTS customer_db;
-USE customer_db;
+# 🧩 Microservices Assignment Starter Template
 
-CREATE TABLE customers (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-full_name VARCHAR(100) NOT NULL,
-identification_number VARCHAR(20) NOT NULL UNIQUE,
-phone_number VARCHAR(15) NOT NULL,
-email VARCHAR(100),
-address VARCHAR(255),
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+This repository is a **starter template** for building a microservices-based system. Use it as a base for your group assignment.
 
--- room_db.sql
-CREATE DATABASE IF NOT EXISTS room_db;
-USE room_db;
+---
 
-CREATE TABLE room_types (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(50) NOT NULL,
-description TEXT,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+## 📁 Folder Structure
 
-CREATE TABLE rooms (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-room_number VARCHAR(10) NOT NULL UNIQUE,
-room_type_id BIGINT NOT NULL,
-monthly_price DECIMAL(10, 2) NOT NULL,
-status ENUM('AVAILABLE', 'BOOKED', 'OCCUPIED', 'MAINTENANCE') NOT NULL DEFAULT 'AVAILABLE',
-description TEXT,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-FOREIGN KEY (room_type_id) REFERENCES room_types(id)
-);
+```
+microservices-assignment-starter/
+├── README.md                       # This instruction file
+├── .env.example                    # Example environment variables
+├── docker-compose.yml              # Multi-container setup for all services
+├── docs/                           # Documentation folder
+│   ├── architecture.md             # Describe your system design here
+│   ├── analysis-and-design.md      # Document system analysis and design details
+│   ├── asset/                      # Store images, diagrams, or other visual assets for documentation
+│   └── api-specs/                  # API specifications in OpenAPI (YAML)
+│       ├── service-a.yaml
+│       └── service-b.yaml
+├── scripts/                        # Utility or deployment scripts
+│   └── init.sh
+├── services/                       # Application microservices
+│   ├── service-a/
+│   │   ├── Dockerfile
+│   │   └── src/
+│   │   └── readme.md               # Service A instructions and description
+│   └── service-b/
+│       ├── Dockerfile
+│       └── src/
+│   │   └── readme.md               # Service B instructions and description
+└── frontend/                       # API Gateway / reverse proxy
+    ├── Dockerfile
+    └── src/
+    └── readme.md                   # Frontend instructions and description
+└── gateway/                        # API Gateway / reverse proxy
+    ├── Dockerfile
+    └── src/
+    └── readme.md                   # API gateway instructions and description
 
-INSERT INTO room_types (name, description) VALUES
-('Standard', 'Phòng tiêu chuẩn cho 1-2 người'),
-('Deluxe', 'Phòng cao cấp cho 2-3 người'),
-('Suite', 'Phòng đặc biệt cho gia đình');
 
--- booking_db.sql
-CREATE DATABASE IF NOT EXISTS booking_db;
-USE booking_db;
+```
 
-CREATE TABLE bookings (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-customer_id BIGINT NOT NULL,
-room_id BIGINT NOT NULL,
-booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-check_in_date DATE NOT NULL,
-status ENUM('PENDING', 'CHECKED_IN', 'CANCELLED') NOT NULL DEFAULT 'PENDING',
-notes TEXT,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+---
 
-CREATE TABLE check_ins (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-booking_id BIGINT,
-customer_id BIGINT NOT NULL,
-room_id BIGINT NOT NULL,
-check_in_date DATE NOT NULL,
-expected_check_out_date DATE,
-status ENUM('ACTIVE', 'CHECKED_OUT') NOT NULL DEFAULT 'ACTIVE',
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-FOREIGN KEY (booking_id) REFERENCES bookings(id)
-);
+## 🚀 Getting Started
 
--- payment_db.sql
-CREATE DATABASE IF NOT EXISTS payment_db;
-USE payment_db;
+1. **Clone this repository**
 
-CREATE TABLE invoices (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-invoice_number VARCHAR(20) NOT NULL UNIQUE,
-customer_id BIGINT NOT NULL,
-room_id BIGINT NOT NULL,
-month_year VARCHAR(7) NOT NULL, -- Format: MM/YYYY
-amount DECIMAL(10, 2) NOT NULL,
-issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-due_date DATE NOT NULL,
-status ENUM('PENDING', 'PAID', 'OVERDUE', 'CANCELLED') NOT NULL DEFAULT 'PENDING',
-description TEXT,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+   ```bash
+   git clone https://github.com/hungdn1701/microservices-assignment-starter.git
+   cd microservices-assignment-starter
+   ```
 
-CREATE TABLE payments (
-id BIGINT AUTO_INCREMENT PRIMARY KEY,
-invoice_id BIGINT,
-customer_id BIGINT NOT NULL,
-room_id BIGINT NOT NULL,
-amount DECIMAL(10, 2) NOT NULL,
-payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-payment_method ENUM('CASH', 'BANK_TRANSFER', 'CREDIT_CARD', 'MOBILE_BANKING', 'OTHER') NOT NULL,
-transaction_id VARCHAR(50),
-month_year VARCHAR(7) NOT NULL, -- Format: MM/YYYY
-notes TEXT,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-FOREIGN KEY (invoice_id) REFERENCES invoices(id)
-);
+2. **Copy environment file**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. **Run with Docker Compose**
+
+   ```bash
+   docker-compose up --build
+   ```
+---
+
+## 🧪 Development Notes
+
+- Use `docs/api-specs/*.yaml` to document REST APIs using OpenAPI format (Swagger).
+
+---
+
+## 📚 Recommended Tasks
+- [ ] Document system analysis and design in `analysis-and-design.md` as the first step
+- [ ] Update `architecture.md` to describe your system components.
+- [ ] Define all APIs using OpenAPI YAML in `docs/api-specs/`.
+- [ ] Implement business logic in `service-a` and `service-b`.
+- [ ] Configure API Gateway
+- [ ] Ensure services can communicate internally using service names (Docker Compose handles networking).
+
+---
+
+## 📌 Notes
+
+- Use Git branches for team collaboration.
+- Commit early, commit often!
+
+---
+
+## 👩‍🏫 Assignment Submission
+
+Please make sure:
+- `README.md` is updated with service descriptions and API usage, following standard README conventions (e.g., clear structure, usage instructions, and contribution guidelines).
+- Include a list of team members and their contributions in the `README.md`.
+- All your code should be **runnable with one command**: `docker-compose up`.
+
+
+
+## Author
+
+This template was created by Hung Dang.
+- Email: hungdn@ptit.edu.vn
+- GitHub: hungdn1701
+
+
+Good luck! 💪🚀
+
