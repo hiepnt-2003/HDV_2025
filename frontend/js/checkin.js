@@ -332,7 +332,7 @@ const loadAvailableRooms = async (selectElement) => {
                 
                 if (confirm(`Bạn có chắc chắn muốn hủy đặt phòng #${bookingId}?`)) {
                     try {
-                        await API.updateBookingStatus(bookingId, 'CANCELLED');
+                        await API.updateBookingStatus(bookingId, "CANCELLED");
                         alert('Đã hủy đặt phòng thành công!');
                         loadAndDisplayBookings();
                     } catch (error) {

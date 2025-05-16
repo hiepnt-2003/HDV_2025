@@ -166,8 +166,42 @@ const API = {
         if (!id || isNaN(id)) {
             throw new Error('ID đặt phòng không hợp lệ');
         }
-        // Gửi giá trị status trực tiếp, không bọc trong đối tượng
-        return await apiCall(`${API_BASE_URL}/api/bookings/${id}/status`, 'PATCH', status);
+        
+        // Kiểm tra ID booking hợp lệ
+        console.log(`Cập nhật trạng thái booking #${id} thành ${status}`);
+        
+        try {
+            // Gửi request giống hệt như cách Postman gửi
+            const response = await fetch(`${API_BASE_URL}/api/bookings/${id}/status`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // Đảm bảo status được gửi chính xác như trong Postman
+                body: JSON.stringify(status)
+            });
+            
+            console.log('Server response status:', response.status);
+            
+            if (!response.ok) {
+                // Lấy thông tin lỗi chi tiết
+                let errorData;
+                try {
+                    errorData = await response.json();
+                    console.error('Server error details:', errorData);
+                } catch (e) {
+                    const errorText = await response.text();
+                    console.error('Error text:', errorText);
+                }
+                throw new Error(`Lỗi khi cập nhật: ${errorData?.message || 'Không thể cập nhật trạng thái đặt phòng'}`);
+            }
+            
+            // Xử lý phản hồi
+            return await response.json();
+        } catch (error) {
+            console.error('Error in updateBookingStatus:', error);
+            throw error;
+        }
     },
     
     // Lấy tất cả nhận phòng
@@ -253,161 +287,6 @@ const API = {
         return await response.json();
     },
     
-    // === Payment Service ===
-    
-    // Lấy tất cả hóa đơn
-    getInvoices: async (status = null) => {
-        let url = `${API_BASE_URL}/api/invoices`;
-        if (status) {
-            url = `${API_BASE_URL}/api/invoices/status/${status}`;
-        }
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Lỗi khi lấy danh sách hóa đơn');
-        return await response.json();
-    },
-    
-    // Lấy thông tin hóa đơn theo ID
-    getInvoiceById: async (id) => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/${id}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy thông tin hóa đơn');
-        return await response.json();
-    },
-    
-    // Lấy hóa đơn theo khách hàng
-    getInvoicesByCustomerId: async (customerId) => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/customer/${customerId}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy hóa đơn theo khách hàng');
-        return await response.json();
-    },
-    
-    // Lấy hóa đơn theo phòng
-    getInvoicesByRoomId: async (roomId) => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/room/${roomId}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy hóa đơn theo phòng');
-        return await response.json();
-    },
-    
-    // Lấy hóa đơn quá hạn
-    getOverdueInvoices: async () => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/overdue`);
-        if (!response.ok) throw new Error('Lỗi khi lấy hóa đơn quá hạn');
-        return await response.json();
-    },
-    
-    // Tìm kiếm hóa đơn
-    searchInvoices: async (term) => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/search?term=${term}`);
-        if (!response.ok) throw new Error('Lỗi khi tìm kiếm hóa đơn');
-        return await response.json();
-    },
-    
-    // Lấy hóa đơn chưa thanh toán của khách hàng và phòng
-    getInvoicesByCustomerAndRoom: async (customerId, roomId, status = 'PENDING') => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/customer/${customerId}?roomId=${roomId}&status=${status}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy hóa đơn của khách hàng và phòng');
-        return await response.json();
-    },
-    
-    // Tạo hóa đơn mới
-    createInvoice: async (invoiceData) => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(invoiceData)
-        });
-        if (!response.ok) throw new Error('Lỗi khi tạo hóa đơn mới');
-        return await response.json();
-    },
-    
-    // Cập nhật trạng thái hóa đơn
-    updateInvoiceStatus: async (id, status) => {
-        const response = await fetch(`${API_BASE_URL}/api/invoices/${id}/status`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(status)
-        });
-        if (!response.ok) throw new Error('Lỗi khi cập nhật trạng thái hóa đơn');
-        return await response.json();
-    },
-    
-    // Lấy tất cả thanh toán
-    getAllPayments: async () => {
-        const response = await fetch(`${API_BASE_URL}/api/payments`);
-        if (!response.ok) throw new Error('Lỗi khi lấy danh sách thanh toán');
-        return await response.json();
-    },
-    
-    // Lấy thanh toán theo khách hàng
-    getPaymentsByCustomerId: async (customerId) => {
-        const response = await fetch(`${API_BASE_URL}/api/payments/customer/${customerId}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy thanh toán theo khách hàng');
-        return await response.json();
-    },
-    
-    // Lấy thanh toán theo phòng
-    getPaymentsByRoomId: async (roomId) => {
-        const response = await fetch(`${API_BASE_URL}/api/payments/room/${roomId}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy thanh toán theo phòng');
-        return await response.json();
-    },
-    
-    // Lấy thanh toán theo phương thức
-    getPaymentsByMethod: async (method) => {
-        const response = await fetch(`${API_BASE_URL}/api/payments/method/${method}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy thanh toán theo phương thức');
-        return await response.json();
-    },
-    
-    // Tìm kiếm thanh toán
-    searchPayments: async (term) => {
-        const response = await fetch(`${API_BASE_URL}/api/payments/search?term=${term}`);
-        if (!response.ok) throw new Error('Lỗi khi tìm kiếm thanh toán');
-        return await response.json();
-    },
-    
-    // Thanh toán hóa đơn
-    payInvoice: async (invoiceId, paymentMethod, transactionId = '', notes = '') => {
-        const url = `${API_BASE_URL}/api/payments/pay-invoice/${invoiceId}?paymentMethod=${paymentMethod}&transactionId=${transactionId}&notes=${encodeURIComponent(notes)}`;
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        if (!response.ok) throw new Error('Lỗi khi thanh toán hóa đơn');
-        return await response.json();
-    },
-    
-    // Tạo thanh toán mới
-    createPayment: async (paymentData) => {
-        const response = await fetch(`${API_BASE_URL}/api/payments`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(paymentData)
-        });
-        if (!response.ok) throw new Error('Lỗi khi tạo thanh toán mới');
-        return await response.json();
-    },
-    
-    // Lấy tổng thu nhập theo tháng
-    getTotalMonthlyIncome: async (monthYear) => {
-        const response = await fetch(`${API_BASE_URL}/api/reports/monthly-income?monthYear=${monthYear}`);
-        if (!response.ok) throw new Error('Lỗi khi lấy tổng thu nhập theo tháng');
-        return await response.json();
-    },
-    
-    // Tạo báo cáo
-    getReports: async (type, startDate, endDate) => {
-        const response = await fetch(`${API_BASE_URL}/api/reports/${type}?startDate=${startDate}&endDate=${endDate}`);
-        if (!response.ok) throw new Error('Lỗi khi tạo báo cáo');
-        return await response.json();
-    }
 };
 
 // Export API object
