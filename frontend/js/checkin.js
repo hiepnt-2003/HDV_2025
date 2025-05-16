@@ -2,6 +2,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ===== FUNCTIONS =====
     
+    function getTodayFormatted() {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+        const year = today.getFullYear();
+
+        return `${day}/${month}/${year}`;
+    }
+
+    // Hàm mới: Kiểm tra xem một ngày có phải là ngày hôm nay không
+    function isToday(dateString) {
+        if (!dateString) return false;
+        
+        // Parse ngày từ chuỗi (giả sử định dạng là ISO date: YYYY-MM-DD)
+        const checkInDate = new Date(dateString);
+        const today = new Date();
+        
+        return checkInDate.getDate() === today.getDate() && 
+            checkInDate.getMonth() === today.getMonth() && 
+            checkInDate.getFullYear() === today.getFullYear();
+    }
+
     // Format tiền tệ
     const formatCurrency = (amount) => {
         return parseInt(amount).toLocaleString('vi-VN') + ' đ';
@@ -256,8 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         bookings.forEach(booking => {
-            // Sử dụng checkInDate làm ngày đặt
-            const bookingDate = booking.checkInDate;
+            // Lấy ngày đặt và ngày nhận phòng từ dữ liệu
+            const bookingDate = booking.bookingDate; // Lấy trường booking_date từ DB
+            const checkInDate = booking.checkInDate; // Lấy trường check_in_date từ DB
+            const today = new Date();
             
             const row = document.createElement('tr');
             
@@ -279,19 +303,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 isCheckedOut ? 'Đã trả phòng' : 
                 'Đã hủy';
             
-            // Format ngày nhận phòng
-            const formattedBookingDate = bookingDate ? formatDate(bookingDate) : 'Chưa xác định';
+            // Format ngày đặt và ngày nhận phòng đúng
+            const formattedBookingDate = bookingDate ? formatDateBooking(bookingDate) : getTodayFormatted();
+            const formattedCheckInDate = checkInDate ? formatDate(checkInDate) : getTodayFormatted();
             
+            // Kiểm tra xem ngày nhận phòng có phải là hôm nay không
+            const isCheckInDateToday = isToday(checkInDate);
+
             row.innerHTML = `
                 <td>${booking.id}</td>
                 <td>${booking.customerName || ''}</td>
                 <td>${booking.roomNumber || ''}</td>
                 <td>${formattedBookingDate}</td>
-                <td>${formattedBookingDate}</td>
+                <td>${formattedCheckInDate}</td>
                 <td><span class="badge ${statusClass}">${statusText}</span></td>
                 <td>
                     ${booking.status === 'PENDING' ? 
-                        `<button class="btn btn-sm btn-success check-in-booking" data-id="${booking.id}">
+                        `<button class="btn btn-sm btn-success check-in-booking ${!isCheckInDateToday ? 'disabled' : ''}" 
+                            data-id="${booking.id}" ${!isCheckInDateToday ? 'disabled' : ''}>
                             <i class="bi bi-box-arrow-in-right me-1"></i> Nhận phòng
                         </button>` : 
                         ''
@@ -326,6 +355,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Nút nhận phòng
         tableBodyElement.querySelectorAll('.check-in-booking').forEach(button => {
             button.addEventListener('click', async (e) => {
+                // Kiểm tra xem nút có bị vô hiệu hóa không
+                if (e.target.classList.contains('disabled') || 
+                    e.target.closest('button').classList.contains('disabled')) {
+                    alert('Không thể nhận phòng vì ngày nhận phòng khác hôm nay.');
+                    return;
+                }
+                
                 const bookingId = e.target.dataset.id || e.target.closest('button').dataset.id;
                 
                 if (confirm(`Bạn có chắc chắn muốn nhận phòng cho đặt phòng #${bookingId}?`)) {
