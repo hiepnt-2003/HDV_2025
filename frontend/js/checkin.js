@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Nếu không parse được, trả về nguyên gốc
         return dateString;
     };
+    
     // Format ngày đặt phòng (ngày và giờ)
     const formatDateBooking = (dateString) => {
         if (!dateString) return 'Chưa xác định';
@@ -133,40 +134,40 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     // Load danh sách phòng trống
-const loadAvailableRooms = async (selectElement) => {
-    try {
-        const rooms = await API.getAvailableRooms();
-        
-        selectElement.innerHTML = '<option value="" selected disabled>-- Chọn phòng --</option>';
-        
-        if (rooms && rooms.length > 0) {
-            rooms.forEach(room => {
-                // Lấy tên loại phòng từ đối tượng roomType
-                const roomTypeName = room.roomType?.name || "Chưa phân loại";
-                
-                const option = document.createElement('option');
-                option.value = room.id;
-                option.textContent = `${room.roomNumber} - ${roomTypeName} - ${formatCurrency(room.monthlyPrice)}`;
-                option.dataset.roomNumber = room.roomNumber;
-                option.dataset.roomType = roomTypeName;
-                option.dataset.price = room.monthlyPrice;
-                
-                // Lưu id của loại phòng nếu cần
-                option.dataset.roomTypeId = room.roomType?.id;
-                
-                selectElement.appendChild(option);
-            });
-            return true;
-        } else {
-            alert('Không có phòng trống nào khả dụng.');
+    const loadAvailableRooms = async (selectElement) => {
+        try {
+            const rooms = await API.getAvailableRooms();
+            
+            selectElement.innerHTML = '<option value="" selected disabled>-- Chọn phòng --</option>';
+            
+            if (rooms && rooms.length > 0) {
+                rooms.forEach(room => {
+                    // Lấy tên loại phòng từ đối tượng roomType
+                    const roomTypeName = room.roomType?.name || "Chưa phân loại";
+                    
+                    const option = document.createElement('option');
+                    option.value = room.id;
+                    option.textContent = `${room.roomNumber} - ${roomTypeName} - ${formatCurrency(room.monthlyPrice)}`;
+                    option.dataset.roomNumber = room.roomNumber;
+                    option.dataset.roomType = roomTypeName;
+                    option.dataset.price = room.monthlyPrice;
+                    
+                    // Lưu id của loại phòng nếu cần
+                    option.dataset.roomTypeId = room.roomType?.id;
+                    
+                    selectElement.appendChild(option);
+                });
+                return true;
+            } else {
+                alert('Không có phòng trống nào khả dụng.');
+                return false;
+            }
+        } catch (error) {
+            console.error('Error loading available rooms:', error);
+            alert('Lỗi khi tải danh sách phòng trống. Vui lòng thử lại sau.');
             return false;
         }
-    } catch (error) {
-        console.error('Error loading available rooms:', error);
-        alert('Lỗi khi tải danh sách phòng trống. Vui lòng thử lại sau.');
-        return false;
-    }
-};
+    };
     
     // Tạo đặt phòng mới
     const createBooking = async (bookingData) => {
@@ -220,6 +221,21 @@ const loadAvailableRooms = async (selectElement) => {
     const loadBookings = async () => {
         try {
             const bookings = await API.getAllBookings();
+            
+            // Lấy thông tin check-in cho mỗi booking có status CHECKED_IN
+            for (let booking of bookings) {
+                if (booking.status === 'CHECKED_IN') {
+                    try {
+                        const checkIn = await API.getCheckInByBookingId(booking.id);
+                        if (checkIn) {
+                            booking.checkInStatus = checkIn.status;
+                        }
+                    } catch (error) {
+                        console.warn(`Không thể lấy thông tin check-in cho booking #${booking.id}`, error);
+                    }
+                }
+            }
+            
             return bookings;
         } catch (error) {
             console.error('Error loading bookings:', error);
@@ -245,14 +261,22 @@ const loadAvailableRooms = async (selectElement) => {
             
             const row = document.createElement('tr');
             
+            // Kiểm tra xem booking này đã trả phòng chưa
+            let isCheckedOut = false;
+            if (booking.checkInStatus === 'CHECKED_OUT') {
+                isCheckedOut = true;
+            }
+            
             const statusClass = 
                 booking.status === 'PENDING' ? 'bg-warning text-dark' : 
-                booking.status === 'CHECKED_IN' ? 'bg-success text-white' : 
+                booking.status === 'CHECKED_IN' && !isCheckedOut ? 'bg-success text-white' : 
+                isCheckedOut ? 'bg-info text-white' : 
                 'bg-secondary text-white';
             
             const statusText = 
                 booking.status === 'PENDING' ? 'Chờ nhận phòng' : 
-                booking.status === 'CHECKED_IN' ? 'Đã nhận phòng' : 
+                booking.status === 'CHECKED_IN' && !isCheckedOut ? 'Đã nhận phòng' : 
+                isCheckedOut ? 'Đã trả phòng' : 
                 'Đã hủy';
             
             // Format ngày nhận phòng
@@ -269,6 +293,12 @@ const loadAvailableRooms = async (selectElement) => {
                     ${booking.status === 'PENDING' ? 
                         `<button class="btn btn-sm btn-success check-in-booking" data-id="${booking.id}">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Nhận phòng
+                        </button>` : 
+                        ''
+                    }
+                    ${booking.status === 'CHECKED_IN' && !isCheckedOut ? 
+                        `<button class="btn btn-sm btn-danger check-out-booking" data-id="${booking.id}">
+                            <i class="bi bi-box-arrow-left me-1"></i> Trả phòng
                         </button>` : 
                         ''
                     }
@@ -310,6 +340,35 @@ const loadAvailableRooms = async (selectElement) => {
             });
         });
         
+        // Nút trả phòng
+        tableBodyElement.querySelectorAll('.check-out-booking').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const bookingId = e.target.dataset.id || e.target.closest('button').dataset.id;
+                
+                if (confirm(`Bạn có chắc chắn muốn trả phòng cho đặt phòng #${bookingId}?`)) {
+                    try {
+                        // Tìm check-in tương ứng với booking
+                        const checkIn = await API.getCheckInByBookingId(bookingId);
+                        
+                        if (checkIn) {
+                            // Cập nhật trạng thái check-in thành CHECKED_OUT
+                            await API.updateCheckInStatus(checkIn.id, "CHECKED_OUT");
+                            alert('Trả phòng thành công!');
+                            
+                            // Tải lại toàn bộ dữ liệu để cập nhật giao diện
+                            loadAndDisplayBookings();
+                            loadAndDisplayBookingCheckIns();
+                        } else {
+                            alert('Không tìm thấy thông tin nhận phòng.');
+                        }
+                    } catch (error) {
+                        console.error('Error checking out:', error);
+                        alert('Lỗi khi trả phòng. Vui lòng thử lại sau.');
+                    }
+                }
+            });
+        });
+        
         // Nút xem chi tiết
         tableBodyElement.querySelectorAll('.view-booking').forEach(button => {
             button.addEventListener('click', async (e) => {
@@ -317,7 +376,27 @@ const loadAvailableRooms = async (selectElement) => {
                 
                 try {
                     const booking = await API.getBookingById(bookingId);
-                    alert(`Thông tin đặt phòng #${bookingId}\n\nKhách hàng: ${booking.customerName}\nPhòng: ${booking.roomNumber}\nNgày đặt: ${formatDate(booking.bookingDate)}\nNgày nhận phòng: ${formatDate(booking.checkInDate)}\nTrạng thái: ${booking.status === 'PENDING' ? 'Chờ nhận phòng' : booking.status === 'CHECKED_IN' ? 'Đã nhận phòng' : 'Đã hủy'}\nGhi chú: ${booking.notes || 'Không có'}`);
+                    
+                    // Kiểm tra trạng thái check-in nếu booking có trạng thái CHECKED_IN
+                    let checkInStatusText = '';
+                    if (booking.status === 'CHECKED_IN') {
+                        try {
+                            const checkIn = await API.getCheckInByBookingId(bookingId);
+                            if (checkIn && checkIn.status === 'CHECKED_OUT') {
+                                checkInStatusText = ' (Đã trả phòng)';
+                            }
+                        } catch (error) {
+                            console.warn(`Không thể lấy thông tin check-in cho booking #${bookingId}`, error);
+                        }
+                    }
+                    
+                    const statusText = booking.status === 'PENDING' 
+                        ? 'Chờ nhận phòng' 
+                        : booking.status === 'CHECKED_IN' 
+                            ? 'Đã nhận phòng' + checkInStatusText
+                            : 'Đã hủy';
+                            
+                    alert(`Thông tin đặt phòng #${bookingId}\n\nKhách hàng: ${booking.customerName}\nPhòng: ${booking.roomNumber}\nNgày đặt: ${formatDate(booking.bookingDate)}\nNgày nhận phòng: ${formatDate(booking.checkInDate)}\nTrạng thái: ${statusText}\nGhi chú: ${booking.notes || 'Không có'}`);
                 } catch (error) {
                     console.error('Error viewing booking:', error);
                     alert('Lỗi khi xem thông tin đặt phòng. Vui lòng thử lại sau.');

@@ -225,6 +225,13 @@ const API = {
         return await response.json();
     },
     
+    // Lấy check-in theo booking ID
+    getCheckInByBookingId: async (bookingId) => {
+        const response = await fetch(`${API_BASE_URL}/api/check-ins/booking/${bookingId}`);
+        if (!response.ok) throw new Error('Lỗi khi lấy thông tin check-in theo booking');
+        return await response.json();
+    },
+    
     // Lấy danh sách nhận phòng theo trạng thái
     getCheckInsByStatus: async (status) => {
         const response = await fetch(`${API_BASE_URL}/api/check-ins/status/${status}`);
@@ -239,7 +246,7 @@ const API = {
         return await response.json();
     },
     
-    // Tạo nhận phòng mới (cập nhật trong api.js)
+    // Tạo nhận phòng mới
     createCheckIn: async (checkInData) => {
         try {
             console.log('API - Creating check-in with data:', JSON.stringify(checkInData));
@@ -287,6 +294,44 @@ const API = {
         return await response.json();
     },
     
+    // Cập nhật trạng thái check-in
+    updateCheckInStatus: async (id, status) => {
+        if (!id || isNaN(id)) {
+            throw new Error('ID check-in không hợp lệ');
+        }
+        
+        try {
+            // Gửi request PATCH để cập nhật trạng thái
+            const response = await fetch(`${API_BASE_URL}/api/check-ins/${id}/status`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(status)
+            });
+            
+            console.log('Server response status:', response.status);
+            
+            if (!response.ok) {
+                // Lấy thông tin lỗi chi tiết
+                let errorData;
+                try {
+                    errorData = await response.json();
+                    console.error('Server error details:', errorData);
+                } catch (e) {
+                    const errorText = await response.text();
+                    console.error('Error text:', errorText);
+                }
+                throw new Error(`Lỗi khi cập nhật: ${errorData?.message || 'Không thể cập nhật trạng thái check-in'}`);
+            }
+            
+            // Xử lý phản hồi
+            return await response.json();
+        } catch (error) {
+            console.error('Error in updateCheckInStatus:', error);
+            throw error;
+        }
+    },
 };
 
 // Export API object
