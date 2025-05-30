@@ -5,187 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="576947fb-5be5-4d0e-be39-82d5b0614df0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/booking-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/booking-service/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/customer-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/customer-service/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/room-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/room-service/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/dependencies-accessors/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AndroidProjectSystem.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mid-project-344380608.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/migrations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/bin/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/bin/main/com/rentalmanagement/apigateway/ApiGatewayApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/bin/main/com/rentalmanagement/apigateway/config/RouterConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/bin/main/com/rentalmanagement/apigateway/filter/CorsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/bin/main/com/rentalmanagement/apigateway/filter/LoggingFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/ApiGatewayApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/config/RouterConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/filter/CorsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/filter/LoggingFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/bin/main/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/bin/main/com/rentalmanagement/eurekaserver/EurekaServerApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/build/classes/java/main/com/rentalmanagement/eurekaserver/EurekaServerApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/build/resources/main/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/init-db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/init-db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/init.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/BookingServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/client/CustomerClient$Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/client/CustomerClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/client/RoomClient$Room$RoomType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/client/RoomClient$Room.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/client/RoomClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/controller/BookingController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/controller/CheckInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/exception/GlobalExceptionHandler$ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/model/Booking$BookingStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/model/Booking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/model/CheckIn$CheckInStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/model/CheckIn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/repository/BookingRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/repository/CheckInRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/service/BookingService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/bin/main/com/rentalmanagement/bookingservice/service/CheckInService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/BookingServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/client/CustomerClient$Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/client/CustomerClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/client/RoomClient$Room$RoomType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/client/RoomClient$Room.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/client/RoomClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/controller/BookingController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/controller/CheckInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/exception/GlobalExceptionHandler$ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/Booking$BookingStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/Booking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/CheckIn$CheckInStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/CheckIn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/repository/BookingRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/repository/CheckInRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/service/BookingService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/service/CheckInService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/Booking$BookingStatus.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/Booking.class.uniqueId8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/BookingController.class.uniqueId9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/BookingDto.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/BookingRepository.class.uniqueId10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/BookingService.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CheckIn$CheckInStatus.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CheckIn.class.uniqueId13" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CheckInController.class.uniqueId15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CheckInDto.class.uniqueId14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CheckInRepository.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CheckInService.class.uniqueId11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CustomerClient.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/CustomerDto.class.uniqueId7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomClient.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomDto.class.uniqueId12" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/CustomerServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/controller/CustomerController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/exception/GlobalExceptionHandler$ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/model/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/repository/CustomerRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/bin/main/com/rentalmanagement/customerservice/service/CustomerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/services/customer-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/CustomerServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/controller/CustomerController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/exception/GlobalExceptionHandler$ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/model/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/repository/CustomerRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/classes/java/main/com/rentalmanagement/customerservice/service/CustomerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/tmp/compileJava/compileTransaction/stash-dir/Customer.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/tmp/compileJava/compileTransaction/stash-dir/CustomerController.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/tmp/compileJava/compileTransaction/stash-dir/CustomerDto.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/tmp/compileJava/compileTransaction/stash-dir/CustomerRepository.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/tmp/compileJava/compileTransaction/stash-dir/CustomerService.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/RoomServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/controller/RoomController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/controller/RoomTypeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/exception/GlobalExceptionHandler$ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/model/Room$RoomStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/model/Room.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/model/RoomType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/repository/RoomRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/repository/RoomTypeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/service/RoomService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/bin/main/com/rentalmanagement/roomservice/service/RoomTypeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/services/room-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/RoomServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/controller/RoomController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/controller/RoomTypeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/exception/GlobalExceptionHandler$ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/model/Room$RoomStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/model/Room.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/model/RoomType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/repository/RoomRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/repository/RoomTypeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/service/RoomService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/classes/java/main/com/rentalmanagement/roomservice/service/RoomTypeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/Room$RoomStatus.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/Room.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomController.class.uniqueId8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomDto.class.uniqueId9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomRepository.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomService.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomType.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomTypeController.class.uniqueId7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomTypeDto.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomTypeRepository.class.uniqueId10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/tmp/compileJava/compileTransaction/stash-dir/RoomTypeService.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/services/booking-service/rental-management-docker.services.booking-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/services/customer-service/rental-management-docker.services.customer-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/services/room-service/rental-management-docker.services.room-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/config/RouterConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/config/RouterConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/filter/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/filter/CorsConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/customer-service/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/customer-service/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/customer-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/customer-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/room-service/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/room-service/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/room-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/room-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,18 +120,21 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build HDV_2025.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Build mid-project-344380608.executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.BookingServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.CustomerServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.RoomServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;services&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/GitHub/mid-project-344380608&quot;,
@@ -312,7 +162,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.RoomServiceApplication">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="rental-management-docker.services.booking-service" />
       <method v="2">
@@ -361,6 +211,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -386,6 +255,8 @@
       <workItem from="1747025329424" duration="38000" />
       <workItem from="1747025373033" duration="3599000" />
       <workItem from="1747035368644" duration="1532000" />
+      <workItem from="1748348814832" duration="1974000" />
+      <workItem from="1748582337425" duration="505000" />
     </task>
     <servers />
   </component>
