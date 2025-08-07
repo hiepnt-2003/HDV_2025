@@ -5,34 +5,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="576947fb-5be5-4d0e-be39-82d5b0614df0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/payment-service.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/services/booking-service/rental-management-docker.services.booking-service.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/services/customer-service/rental-management-docker.services.customer-service.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/services/payment-service/rental-management-docker.services.payment-service.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/services/room-service/rental-management-docker.services.room-service.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/css/overdue-styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/invoice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/js/invoice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/payment-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/PaymentServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/client/BookingClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/client/CustomerClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/client/RoomClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/controller/InvoiceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/controller/PaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/controller/UtilityController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/Invoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/PaymentHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/ServiceRate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/UtilityReading.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/dto/InvoiceCreateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/dto/InvoiceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/dto/PaymentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/model/dto/UtilityReadingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/repository/InvoiceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/repository/PaymentHistoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/repository/ServiceRateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/repository/UtilityReadingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/service/InvoiceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/service/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/java/com/rentalmanagement/paymentservice/service/UtilityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/payment-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api-gateway/rental-management-docker.api-gateway.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/eureka-server/rental-management-docker.eureka-server.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/services/booking-service/rental-management-docker.services.booking-service.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/services/customer-service/rental-management-docker.services.customer-service.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/services/room-service/rental-management-docker.services.room-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/config/RouterConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/config/RouterConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/filter/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/classes/java/main/com/rentalmanagement/apigateway/filter/CorsConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/resources/main/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/booking-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/customer-service/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customer-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/customer-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/room-service/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/room-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/room-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/rentalmanagement/apigateway/config/RouterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/rentalmanagement/apigateway/config/RouterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/checkin.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/checkin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/js/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/js/checkin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/checkin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/booking-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/booking-data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/controller/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/controller/BookingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/Booking$BookingStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/Booking$BookingStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/model/Booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/service/BookingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/classes/java/main/com/rentalmanagement/bookingservice/service/BookingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/booking-service/src/main/java/com/rentalmanagement/bookingservice/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking-service/src/main/java/com/rentalmanagement/bookingservice/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +82,9 @@
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/services/payment-service">
       <ProjectState />
     </projectState>
   </component>
@@ -55,30 +99,16 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mid-project-344380608" type="f1a62948:ProjectNode" />
+                <item name="payment-service" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mid-project-344380608" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="rental-management-docker" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mid-project-344380608" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mid-project-344380608" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="help" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mid-project-344380608" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
+                <item name="rental-management-docker" type="f1a62948:ProjectNode" />
+                <item name="services" type="2d1252cf:ModuleNode" />
               </path>
             </expand>
             <select />
@@ -91,6 +121,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
+        <option value="Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -117,40 +150,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build HDV_2025.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build mid-project-344380608.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.BookingServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CustomerServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RoomServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/GitHub/mid-project-344380608&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Gradle.Build HDV_2025.executor": "Run",
+    "Gradle.Build mid-project-344380608.executor": "Run",
+    "Gradle.Build payment-service.executor": "Run",
+    "HTTP Request.generated-requests | #3.executor": "Run",
+    "JUnit.All in payment-service.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.BookingServiceApplication.executor": "Run",
+    "Spring Boot.CustomerServiceApplication.executor": "Run",
+    "Spring Boot.EurekaServerApplication.executor": "Run",
+    "Spring Boot.PaymentServiceApplication (1).executor": "Run",
+    "Spring Boot.PaymentServiceApplication.executor": "Run",
+    "Spring Boot.RoomServiceApplication.executor": "Run",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/GitHub/HDV_2025",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "reactor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -162,7 +206,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+  <component name="RunManager" selected="Spring Boot.CustomerServiceApplication">
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="rental-management-docker.services.booking-service" />
       <method v="2">
@@ -204,6 +251,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PaymentServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="payment-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rentalmanagement.paymentservice.PaymentServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="rental-management-docker.services.payment-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rentalmanagement.paymentservice.PaymentServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rentalmanagement.paymentservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RoomServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="rental-management-docker.services.room-service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.rentalmanagement.roomservice.RoomServiceApplication" />
@@ -217,17 +284,20 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.generated-requests | #3" />
+      <item itemvalue="Spring Boot.PaymentServiceApplication (1)" />
+      <item itemvalue="Spring Boot.RoomServiceApplication" />
+      <item itemvalue="Spring Boot.ApiGatewayApplication" />
+      <item itemvalue="Spring Boot.BookingServiceApplication" />
+      <item itemvalue="Spring Boot.CustomerServiceApplication" />
+      <item itemvalue="Spring Boot.EurekaServerApplication" />
+      <item itemvalue="Spring Boot.PaymentServiceApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Spring Boot.PaymentServiceApplication" />
+        <item itemvalue="HTTP Request.generated-requests | #3" />
       </list>
     </recent_temporary>
   </component>
@@ -257,6 +327,15 @@
       <workItem from="1747035368644" duration="1532000" />
       <workItem from="1748348814832" duration="1974000" />
       <workItem from="1748582337425" duration="505000" />
+      <workItem from="1748582870174" duration="964000" />
+      <workItem from="1748594696582" duration="3711000" />
+      <workItem from="1749600462084" duration="488000" />
+      <workItem from="1749604386665" duration="2497000" />
+      <workItem from="1751961393850" duration="135000" />
+      <workItem from="1753098029546" duration="3728000" />
+      <workItem from="1753411197890" duration="2152000" />
+      <workItem from="1753687582989" duration="8406000" />
+      <workItem from="1753702848139" duration="7346000" />
     </task>
     <servers />
   </component>
@@ -273,5 +352,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

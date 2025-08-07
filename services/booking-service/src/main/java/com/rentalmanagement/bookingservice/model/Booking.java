@@ -43,7 +43,6 @@ public class Booking {
     private LocalDateTime bookingDate;
 
     @NotNull(message = "Ngày nhận phòng không được để trống")
-    @Future(message = "Ngày nhận phòng phải là ngày trong tương lai")
     @Column(name = "check_in_date", nullable = false)
     private LocalDate checkInDate;
 

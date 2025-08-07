@@ -27,6 +27,14 @@ public class RouterConfig {
                         .uri("lb://booking-service"))
                 .route("check-ins", r -> r.path("/api/check-ins/**")
                         .uri("lb://booking-service"))
+
+                // Payment Service Routes
+                .route("invoices", r -> r.path("/api/invoices/**")
+                .uri("lb://payment-service"))
+                .route("payments", r -> r.path("/api/payments/**")
+                        .uri("lb://payment-service"))
+                .route("utilities", r -> r.path("/api/utilities/**")
+                        .uri("lb://payment-service"))
                 .build();
     }
 }

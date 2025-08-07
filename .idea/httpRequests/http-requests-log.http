@@ -1,0 +1,20 @@
+GET http://localhost:8080/api/invoices
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.0.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-07-28T152927.200.json
+
+###
+
+GET http://localhost:8080/api/invoices
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.0.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-07-28T152248.200.json
+
+###
+

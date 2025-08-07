@@ -1,0 +1,238 @@
+/* Additional styles for overdue booking management */
+
+/* Overdue row styling */
+.table-danger {
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+}
+
+.table-danger td {
+    border-color: #f5c6cb !important;
+}
+
+/* Overdue badge styling */
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+    animation: pulse-danger 2s infinite;
+}
+
+@keyframes pulse-danger {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+/* Notification styles */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 400px;
+}
+
+.alert-floating {
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+}
+
+.alert-floating.alert-info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    color: #0c5460;
+}
+
+.alert-floating.alert-warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+}
+
+.alert-floating.alert-danger {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+/* Button styles for overdue actions */
+.btn-warning.reactivate-booking {
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+    color: white;
+}
+
+.btn-warning.reactivate-booking:hover {
+    background-color: #e8650e;
+    border-color: #e8650e;
+    color: white;
+}
+
+/* Manual check button in navbar */
+.navbar .btn-outline-light.btn-sm {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .btn-outline-light.btn-sm:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-indicator.pending {
+    background-color: #ffc107;
+}
+
+.status-indicator.checked-in {
+    background-color: #28a745;
+}
+
+.status-indicator.checked-out {
+    background-color: #17a2b8;
+}
+
+.status-indicator.overdue {
+    background-color: #dc3545;
+    animation: blink 1s infinite;
+}
+
+.status-indicator.cancelled {
+    background-color: #6c757d;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.3;
+    }
+}
+
+/* Disabled button styling */
+.btn.disabled, .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn.disabled:hover, .btn:disabled:hover {
+    opacity: 0.6;
+    transform: none;
+}
+
+/* Loading indicator for buttons */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .notification-container {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+
+    .alert-floating {
+        font-size: 0.875rem;
+    }
+
+    .navbar .btn-outline-light.btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Table improvements for mobile */
+@media (max-width: 576px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+
+    .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+    }
+}
+
+/* Tooltip styling */
+.tooltip {
+    font-size: 0.875rem;
+}
+
+.tooltip-inner {
+    max-width: 200px;
+    text-align: left;
+}
+
+/* Focus states for accessibility */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #80bdff;
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .btn,
+    .alert-floating,
+    .notification-container {
+        display: none !important;
+    }
+
+    .table-danger {
+        background-color: #f8f9fa !important;
+        border: 2px solid #dc3545 !important;
+    }
+
+    .badge {
+        border: 1px solid #000;
+        color: #000 !important;
+        background-color: transparent !important;
+    }
+}
