@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Thuê phòng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#" style="color: var(--primary-color);">
+            <i class="bi bi-building me-2"></i>
+            Rental Management
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#rooms">Phòng trọ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Về chúng tôi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Liên hệ</a>
+                </li>
+            </ul>
+            <div class="navbar-nav">
+                <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="bi bi-person-circle me-1"></i>
+                    Đăng nhập Admin
+                </button>
+                <button class="btn btn-primary" onclick="scrollToRooms()">
+                    <i class="bi bi-search me-1"></i>
+                    Tìm phòng
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Tìm phòng trọ lý tưởng của bạn</h1>
+        <p class="lead mb-5">Hệ thống quản lý cho thuê phòng trọ hiện đại, tiện lợi và đáng tin cậy</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="stats-section">
+                    <div class="row">
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalRooms">0</div>
+                                <div class="text-muted">Tổng phòng</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-number" id="availableRooms">0</div>
+                                <div class="text-muted">Phòng trống</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-number" id="occupiedRooms">0</div>
+                                <div class="text-muted">Đang thuê</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-number" id="bookedRooms">0</div>
+                                <div class="text-muted">Đã đặt</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="container">
+    <div class="filter-section">
+        <h3 class="section-title">
+            <i class="bi bi-funnel me-2"></i>
+            Tìm kiếm & Lọc phòng
+        </h3>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Loại phòng</label>
+                <select class="form-select" id="roomTypeFilter">
+                    <option value="">Tất cả loại phòng</option>
+                    <option value="1">Standard</option>
+                    <option value="2">Deluxe</option>
+                    <option value="3">VIP</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Trạng thái</label>
+                <select class="form-select" id="statusFilter">
+                    <option value="">Tất cả trạng thái</option>
+                    <option value="AVAILABLE">Có sẵn</option>
+                    <option value="OCCUPIED">Đang thuê</option>
+                    <option value="BOOKED">Đã đặt</option>
+                    <option value="MAINTENANCE">Bảo trì</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Khoảng giá (VNĐ/tháng)</label>
+                <select class="form-select" id="priceFilter">
+                    <option value="">Tất cả mức giá</option>
+                    <option value="0-3000000">Dưới 3 triệu</option>
+                    <option value="3000000-5000000">3 - 5 triệu</option>
+                    <option value="5000000-7000000">5 - 7 triệu</option>
+                    <option value="7000000-999999999">Trên 7 triệu</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Tìm kiếm</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Số phòng...">
+                    <button class="btn btn-primary" onclick="applyFilters()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <button class="filter-btn me-2 active" onclick="filterByStatus('all')">Tất cả</button>
+                <button class="filter-btn me-2" onclick="filterByStatus('AVAILABLE')">Có sẵn</button>
+                <button class="filter-btn me-2" onclick="filterByStatus('OCCUPIED')">Đang thuê</button>
+                <button class="filter-btn me-2" onclick="filterByStatus('BOOKED')">Đã đặt</button>
+                <button class="filter-btn" onclick="clearFilters()">Xóa bộ lọc</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Rooms Section -->
+<section class="container my-5" id="rooms">
+    <h2 class="section-title">
+        <i class="bi bi-grid-3x3 me-2"></i>
+        Danh sách phòng
+    </h2>
+    <div class="row" id="roomsList">
+        <!-- Room cards will be loaded here -->
+        <div class="col-12 text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
+            </div>
+            <p class="mt-3">Đang tải danh sách phòng...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Admin Panel -->
+<section class="container my-5" id="adminSection" style="display: none;">
+    <div class="admin-panel">
+        <div class="text-center mb-4">
+            <h3>
+                <i class="bi bi-shield-check me-2"></i>
+                Bảng điều khiển Admin
+            </h3>
+            <p class="mb-0">Chào mừng bạn đến với hệ thống quản lý</p>
+        </div>
+
+        <div class="admin-menu">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card" onclick="window.location.href='checkin.html'">
+                        <div class="mb-3">
+                            <i class="bi bi-box-arrow-in-right" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5>Nhận phòng</h5>
+                        <p class="small">Quản lý check-in và đặt phòng</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card" onclick="window.location.href='invoice.html'">
+                        <div class="mb-3">
+                            <i class="bi bi-receipt" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5>Hóa đơn</h5>
+                        <p class="small">Quản lý thanh toán và hóa đơn</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card" onclick="window.location.href='customers.html'">
+                        <div class="mb-3">
+                            <i class="bi bi-people" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5>Quản lý khách hàng</h5>
+                        <p class="small">Thông tin khách thuê phòng</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card" onclick="window.location.href='rooms-management.html'">
+                        <div class="mb-3">
+                            <i class="bi bi-building" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5>Quản lý phòng</h5>
+                        <p class="small">Cập nhật thông tin phòng</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-light" onclick="logout()">
+                    <i class="bi bi-box-arrow-right me-1"></i>
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Login Modal -->
+<div class="modal fade login-modal" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-shield-lock me-2"></i>
+                    Đăng nhập Admin
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label">Tên đăng nhập</label>
+                        <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                            <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mật khẩu</label>
+                        <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                            <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" required>
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                                <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">
+                            Ghi nhớ đăng nhập
+                        </label>
+                    </div>
+                    <div class="alert alert-info small">
+                        <i class="bi bi-info-circle me-1"></i>
+                        Demo: username = <strong>admin</strong>, password = <strong>admin123</strong>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="login()">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>
+                    Đăng nhập
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Room Detail Modal -->
+<div class="modal fade" id="roomDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chi tiết phòng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="roomDetailContent">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success" id="bookRoomBtn" style="display: none;">
+                    <i class="bi bi-calendar-check me-1"></i>
+                    Đặt phòng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">
+                    <i class="bi bi-calendar-check me-2"></i>
+                    Đặt phòng
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Room Info -->
+                    <div class="col-md-6">
+                        <h6 class="fw-bold text-success mb-3">Thông tin phòng</h6>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div id="selectedRoomInfo">
+                                    <!-- Room info will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Info -->
+                    <div class="col-md-6">
+                        <h6 class="fw-bold text-success mb-3">Thông tin khách hàng</h6>
+                        <div class="mb-3">
+                            <label class="form-label">Tìm kiếm khách hàng</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="bookingCustomerSearch" placeholder="Nhập CMND/CCCD hoặc SĐT">
+                                <button class="btn btn-outline-secondary" type="button" id="bookingSearchCustomerBtn">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" id="bookingNewCustomerCheck">
+                                <label class="form-check-label" for="bookingNewCustomerCheck">
+                                    Khách hàng mới
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="bookingCustomerForm">
+                            <div class="mb-3">
+                                <label class="form-label">Họ tên *</label>
+                                <input type="text" class="form-control" id="bookingFullName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">CMND/CCCD *</label>
+                                <input type="text" class="form-control" id="bookingIdentificationNumber" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Số điện thoại *</label>
+                                <input type="text" class="form-control" id="bookingPhoneNumber" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="bookingEmail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold text-success mb-3">Thông tin đặt phòng</h6>
+                        <div class="mb-3">
+                            <label class="form-label">Ngày nhận phòng *</label>
+                            <input type="date" class="form-control" id="bookingCheckInDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ghi chú</label>
+                            <textarea class="form-control" id="bookingNotes" rows="3" placeholder="Ghi chú thêm về yêu cầu đặt phòng"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6 class="fw-bold text-success mb-3">Tóm tắt chi phí</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Tiền thuê/tháng:</span>
+                                    <strong id="bookingSummaryRent">0₫</strong>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Tiền cọc:</span>
+                                    <strong id="bookingSummaryDeposit" class="text-warning">0₫</strong>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Phí dịch vụ:</span>
+                                    <span>150,000₫</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Tổng tiền cần thanh toán:</span>
+                                    <strong class="text-success" id="bookingSummaryTotal">0₫</strong>
+                                </div>
+                                <small class="text-muted">* Tiền cọc = Tiền thuê 1 tháng</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i>
+                    Hủy
+                </button>
+                <button type="button" class="btn btn-success" id="confirmBookingBtn">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Xác nhận đặt phòng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Action Button -->
+<button class="floating-action" onclick="scrollToTop()" title="Lên đầu trang">
+    <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>
