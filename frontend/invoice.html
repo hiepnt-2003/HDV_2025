@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý hóa đơn</title>
+    <title>Quản lý hóa đơn - Home4U</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/common-styles.css">
     <style>
         .invoice-card {
             transition: transform 0.2s;
@@ -14,80 +15,98 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
+        .hero-mini {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
         .status-pending { color: #f59e0b; }
         .status-paid { color: #10b981; }
         .status-overdue { color: #ef4444; }
         .status-cancelled { color: #6b7280; }
-
-        .dashboard-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .revenue-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-        .pending-card {
-            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
-            color: white;
-        }
-        .overdue-card {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            color: #333;
-        }
-
-        .form-floating input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-        }
-
-        .table-hover tbody tr:hover {
-            background-color: rgba(102, 126, 234, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .table-responsive {
-                font-size: 0.875rem;
-            }
-        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Hệ thống Quản lý Thuê phòng</a>
+        <a class="navbar-brand brand-logo" href="index.html">
+            <i class="bi bi-house-heart"></i>
+            Home4U
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="checkin.html">Nhận phòng</a>
+                    <a class="nav-link" href="checkin.html">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>
+                        Nhận phòng
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="invoice.html">Hóa đơn</a>
+                    <a class="nav-link active" href="invoice.html">
+                        <i class="bi bi-receipt me-1"></i>
+                        Hóa đơn
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Quản lý khách hàng</a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-people me-1"></i>
+                        Quản lý khách hàng
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Quản lý phòng</a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-building me-1"></i>
+                        Quản lý phòng
+                    </a>
                 </li>
             </ul>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">
+                    <i class="bi bi-house me-1"></i>
+                    Trang chủ
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
-<div class="container mt-4">
+<!-- Page Header -->
+<div class="hero-mini">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="mb-2">
+                    <i class="bi bi-receipt me-3"></i>
+                    Quản lý hóa đơn
+                </h1>
+                <p class="lead mb-0">Theo dõi và quản lý thanh toán một cách hiệu quả</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="d-flex gap-2 justify-content-end">
+                    <span class="badge bg-success fs-6">
+                        <i class="bi bi-check-circle me-1"></i>
+                        Đã thanh toán
+                    </span>
+                    <span class="badge bg-warning fs-6">
+                        <i class="bi bi-clock me-1"></i>
+                        Chờ thanh toán
+                    </span>
+                    <span class="badge bg-danger fs-6">
+                        <i class="bi bi-exclamation-triangle me-1"></i>
+                        Quá hạn
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     <!-- Dashboard Cards -->
     <div class="row mb-4">
         <div class="col-lg-3 col-md-6 mb-3">
@@ -134,11 +153,49 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="card-title mb-1 text-dark">Quá hạn</h6>
-                            <h3 class="mb-0 text-dark" id="overdueCount">0</h3>
+                            <h6 class="card-title mb-1 text-white">Quá hạn</h6>
+                            <h3 class="mb-0 text-white" id="overdueCount">0</h3>
                         </div>
-                        <i class="bi bi-exclamation-triangle fs-1 opacity-75 text-dark"></i>
+                        <i class="bi bi-exclamation-triangle fs-1 opacity-75 text-white"></i>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Panel -->
+    <div class="card mb-4">
+        <div class="card-header bg-light">
+            <h6 class="mb-0">
+                <i class="bi bi-lightning-charge me-2"></i>
+                Thao tác nhanh
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <button class="btn btn-outline-primary w-100" onclick="filterByStatus('PENDING')">
+                        <i class="bi bi-clock me-2"></i>
+                        Chờ thanh toán
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-danger w-100" onclick="filterByStatus('OVERDUE')">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Quá hạn
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-success w-100" onclick="filterByStatus('PAID')">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Đã thanh toán
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-secondary w-100" onclick="clearAllFilters()">
+                        <i class="bi bi-arrow-clockwise me-2"></i>
+                        Xóa bộ lọc
+                    </button>
                 </div>
             </div>
         </div>
@@ -146,75 +203,83 @@
 
     <!-- Main Content Card -->
     <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-            <div class="d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">
-                    <i class="bi bi-receipt me-2"></i>
-                    Quản lý hóa đơn
-                </h4>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#createInvoiceModal">
-                    <i class="bi bi-plus-circle me-1"></i>
-                    Tạo hóa đơn mới
-                </button>
-            </div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="bi bi-table me-2"></i>
+                Danh sách hóa đơn
+            </h4>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createInvoiceModal">
+                <i class="bi bi-plus-circle me-2"></i>
+                Tạo hóa đơn mới
+            </button>
         </div>
         <div class="card-body">
             <!-- Filters -->
-            <div class="row mb-4">
-                <div class="col-md-3 mb-2">
-                    <label class="form-label">Trạng thái</label>
-                    <select class="form-select" id="statusFilter">
-                        <option value="">Tất cả trạng thái</option>
-                        <option value="PENDING">Chờ thanh toán</option>
-                        <option value="PAID">Đã thanh toán</option>
-                        <option value="OVERDUE">Quá hạn</option>
-                        <option value="CANCELLED">Đã hủy</option>
-                    </select>
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">
+                        <i class="bi bi-funnel me-2"></i>
+                        Bộ lọc tìm kiếm
+                    </h6>
                 </div>
-                <div class="col-md-2 mb-2">
-                    <label class="form-label">Tháng</label>
-                    <select class="form-select" id="monthFilter">
-                        <option value="">Tất cả</option>
-                        <option value="1">Tháng 1</option>
-                        <option value="2">Tháng 2</option>
-                        <option value="3">Tháng 3</option>
-                        <option value="4">Tháng 4</option>
-                        <option value="5">Tháng 5</option>
-                        <option value="6">Tháng 6</option>
-                        <option value="7">Tháng 7</option>
-                        <option value="8">Tháng 8</option>
-                        <option value="9">Tháng 9</option>
-                        <option value="10">Tháng 10</option>
-                        <option value="11">Tháng 11</option>
-                        <option value="12">Tháng 12</option>
-                    </select>
-                </div>
-                <div class="col-md-2 mb-2">
-                    <label class="form-label">Năm</label>
-                    <select class="form-select" id="yearFilter">
-                        <option value="">Tất cả</option>
-                        <option value="2024">2024</option>
-                        <option value="2025" selected>2025</option>
-                        <option value="2026">2026</option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <label class="form-label">Tìm kiếm</label>
-                    <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm khách hàng/phòng">
-                </div>
-                <div class="col-md-2 mb-2">
-                    <label class="form-label">&nbsp;</label>
-                    <button class="btn btn-outline-primary w-100 d-block" onclick="loadInvoices()">
-                        <i class="bi bi-search me-1"></i>
-                        Tìm kiếm
-                    </button>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-2">
+                            <label class="form-label">Trạng thái</label>
+                            <select class="form-select" id="statusFilter">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="PENDING">Chờ thanh toán</option>
+                                <option value="PAID">Đã thanh toán</option>
+                                <option value="OVERDUE">Quá hạn</option>
+                                <option value="CANCELLED">Đã hủy</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Tháng</label>
+                            <select class="form-select" id="monthFilter">
+                                <option value="">Tất cả</option>
+                                <option value="1">Tháng 1</option>
+                                <option value="2">Tháng 2</option>
+                                <option value="3">Tháng 3</option>
+                                <option value="4">Tháng 4</option>
+                                <option value="5">Tháng 5</option>
+                                <option value="6">Tháng 6</option>
+                                <option value="7">Tháng 7</option>
+                                <option value="8">Tháng 8</option>
+                                <option value="9">Tháng 9</option>
+                                <option value="10">Tháng 10</option>
+                                <option value="11">Tháng 11</option>
+                                <option value="12">Tháng 12</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Năm</label>
+                            <select class="form-select" id="yearFilter">
+                                <option value="">Tất cả</option>
+                                <option value="2024">2024</option>
+                                <option value="2025" selected>2025</option>
+                                <option value="2026">2026</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Tìm kiếm</label>
+                            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm khách hàng/phòng/mã hóa đơn">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">&nbsp;</label>
+                            <button class="btn btn-primary w-100 d-block" onclick="loadInvoices()">
+                                <i class="bi bi-search me-1"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Invoices Table -->
             <div class="table-responsive">
                 <table class="table table-hover">
-                    <thead class="table-light">
+                    <thead>
                     <tr>
                         <th>Mã HĐ</th>
                         <th>Khách hàng</th>
@@ -246,10 +311,10 @@
 <div class="modal fade" id="createInvoiceModal" tabindex="-1">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+            <div class="modal-header">
                 <h5 class="modal-title">
                     <i class="bi bi-plus-circle me-2"></i>
-                    Tạo hóa đơn mới
+                    Tạo hóa đơn mới - Home4U
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
@@ -257,159 +322,197 @@
                 <form id="createInvoiceForm">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="fw-bold text-primary mb-3">Thông tin cơ bản</h6>
-
-                            <div class="mb-3">
-                                <label class="form-label">Khách hàng *</label>
-                                <select class="form-select" id="customerId" required>
-                                    <option value="">-- Chọn khách hàng --</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Phòng *</label>
-                                <select class="form-select" id="roomId" required>
-                                    <option value="">-- Chọn phòng --</option>
-                                </select>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0">Thông tin cơ bản</h6>
+                                </div>
+                                <div class="card-body">
                                     <div class="mb-3">
-                                        <label class="form-label">Tháng thanh toán *</label>
-                                        <select class="form-select" id="billingMonth" required>
-                                            <option value="1">Tháng 1</option>
-                                            <option value="2">Tháng 2</option>
-                                            <option value="3">Tháng 3</option>
-                                            <option value="4">Tháng 4</option>
-                                            <option value="5">Tháng 5</option>
-                                            <option value="6">Tháng 6</option>
-                                            <option value="7">Tháng 7</option>
-                                            <option value="8">Tháng 8</option>
-                                            <option value="9">Tháng 9</option>
-                                            <option value="10">Tháng 10</option>
-                                            <option value="11">Tháng 11</option>
-                                            <option value="12">Tháng 12</option>
+                                        <label class="form-label">Khách hàng *</label>
+                                        <select class="form-select" id="customerId" required>
+                                            <option value="">-- Chọn khách hàng --</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+
                                     <div class="mb-3">
-                                        <label class="form-label">Năm thanh toán *</label>
-                                        <select class="form-select" id="billingYear" required>
-                                            <option value="2024">2024</option>
-                                            <option value="2025" selected>2025</option>
-                                            <option value="2026">2026</option>
+                                        <label class="form-label">Phòng *</label>
+                                        <select class="form-select" id="roomId" required>
+                                            <option value="">-- Chọn phòng --</option>
                                         </select>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Ngày lập</label>
-                                        <input type="date" class="form-control" id="issueDate" required>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Tháng thanh toán *</label>
+                                                <select class="form-select" id="billingMonth" required>
+                                                    <option value="1">Tháng 1</option>
+                                                    <option value="2">Tháng 2</option>
+                                                    <option value="3">Tháng 3</option>
+                                                    <option value="4">Tháng 4</option>
+                                                    <option value="5">Tháng 5</option>
+                                                    <option value="6">Tháng 6</option>
+                                                    <option value="7">Tháng 7</option>
+                                                    <option value="8">Tháng 8</option>
+                                                    <option value="9">Tháng 9</option>
+                                                    <option value="10">Tháng 10</option>
+                                                    <option value="11">Tháng 11</option>
+                                                    <option value="12">Tháng 12</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Năm thanh toán *</label>
+                                                <select class="form-select" id="billingYear" required>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025" selected>2025</option>
+                                                    <option value="2026">2026</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Hạn thanh toán</label>
-                                        <input type="date" class="form-control" id="dueDate" required>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Ngày lập</label>
+                                                <input type="date" class="form-control" id="issueDate" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Hạn thanh toán</label>
+                                                <input type="date" class="form-control" id="dueDate" required>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <h6 class="fw-bold text-primary mb-3">Điện nước & Phí</h6>
+                            <div class="card">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">Điện nước & Phí dịch vụ</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Số điện cũ (kWh)</label>
+                                                <input type="number" class="form-control" id="electricityPrevious" step="0.1" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Số điện mới (kWh)</label>
+                                                <input type="number" class="form-control" id="electricityCurrent" step="0.1" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Số điện cũ (kWh)</label>
-                                        <input type="number" class="form-control" id="electricityPrevious" step="0.1" value="0">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Số nước cũ (m³)</label>
+                                                <input type="number" class="form-control" id="waterPrevious" step="0.1" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Số nước mới (m³)</label>
+                                                <input type="number" class="form-control" id="waterCurrent" step="0.1" value="0">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Số điện mới (kWh)</label>
-                                        <input type="number" class="form-control" id="electricityCurrent" step="0.1" value="0">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Số nước cũ (m³)</label>
-                                        <input type="number" class="form-control" id="waterPrevious" step="0.1" value="0">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Phí dịch vụ (₫)</label>
+                                                <input type="number" class="form-control" id="serviceFee" value="100000">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Phí internet (₫)</label>
+                                                <input type="number" class="form-control" id="internetFee" value="150000">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Số nước mới (m³)</label>
-                                        <input type="number" class="form-control" id="waterCurrent" step="0.1" value="0">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Phí dịch vụ (₫)</label>
-                                        <input type="number" class="form-control" id="serviceFee" value="100000">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Phí gửi xe (₫)</label>
+                                                <input type="number" class="form-control" id="parkingFee" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Phí khác (₫)</label>
+                                                <input type="number" class="form-control" id="otherFees" value="0">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Phí internet (₫)</label>
-                                        <input type="number" class="form-control" id="internetFee" value="150000">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Phí gửi xe (₫)</label>
-                                        <input type="number" class="form-control" id="parkingFee" value="0">
+                                        <label class="form-label">Giảm giá (₫)</label>
+                                        <input type="number" class="form-control" id="discountAmount" value="0">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Phí khác (₫)</label>
-                                        <input type="number" class="form-control" id="otherFees" value="0">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Giảm giá (₫)</label>
-                                <input type="number" class="form-control" id="discountAmount" value="0">
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Ghi chú</label>
-                        <textarea class="form-control" id="invoiceNotes" rows="3"></textarea>
+                    <div class="card mt-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Ghi chú</h6>
+                        </div>
+                        <div class="card-body">
+                            <textarea class="form-control" id="invoiceNotes" rows="3" placeholder="Ghi chú thêm về hóa đơn..."></textarea>
+                        </div>
                     </div>
 
                     <!-- Preview Calculation -->
-                    <div class="card bg-light">
+                    <div class="card mt-3 bg-light">
+                        <div class="card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-calculator me-2"></i>
+                                Tính toán sơ bộ
+                            </h6>
+                        </div>
                         <div class="card-body">
-                            <h6 class="fw-bold">Tính toán sơ bộ:</h6>
-                            <div class="row text-sm">
+                            <div class="row">
                                 <div class="col-md-6">
-                                    <p class="mb-1">Tiền thuê phòng: <span id="previewRent" class="fw-bold">0₫</span></p>
-                                    <p class="mb-1">Tiền điện: <span id="previewElectricity" class="fw-bold">0₫</span></p>
-                                    <p class="mb-1">Tiền nước: <span id="previewWater" class="fw-bold">0₫</span></p>
+                                    <p class="mb-1 d-flex justify-content-between">
+                                        <span>Tiền thuê phòng:</span>
+                                        <span id="previewRent" class="fw-bold text-primary">0₫</span>
+                                    </p>
+                                    <p class="mb-1 d-flex justify-content-between">
+                                        <span>Tiền điện:</span>
+                                        <span id="previewElectricity" class="fw-bold text-warning">0₫</span>
+                                    </p>
+                                    <p class="mb-1 d-flex justify-content-between">
+                                        <span>Tiền nước:</span>
+                                        <span id="previewWater" class="fw-bold text-info">0₫</span>
+                                    </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="mb-1">Phí dịch vụ: <span id="previewService" class="fw-bold">0₫</span></p>
-                                    <p class="mb-1">Giảm giá: <span id="previewDiscount" class="fw-bold text-danger">0₫</span></p>
-                                    <p class="mb-0 fs-5">Tổng cộng: <span id="previewTotal" class="fw-bold text-primary">0₫</span></p>
+                                    <p class="mb-1 d-flex justify-content-between">
+                                        <span>Phí dịch vụ:</span>
+                                        <span id="previewService" class="fw-bold text-success">0₫</span>
+                                    </p>
+                                    <p class="mb-1 d-flex justify-content-between">
+                                        <span>Giảm giá:</span>
+                                        <span id="previewDiscount" class="fw-bold text-danger">-0₫</span>
+                                    </p>
+                                    <hr>
+                                    <p class="mb-0 d-flex justify-content-between fs-5">
+                                        <span class="fw-bold">Tổng cộng:</span>
+                                        <span id="previewTotal" class="fw-bold text-primary">0₫</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -434,10 +537,10 @@
 <div class="modal fade" id="invoiceDetailModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+            <div class="modal-header">
                 <h5 class="modal-title">
                     <i class="bi bi-receipt me-2"></i>
-                    Chi tiết hóa đơn
+                    Chi tiết hóa đơn - Home4U
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
@@ -462,7 +565,7 @@
             <div class="modal-header bg-success text-white">
                 <h5 class="modal-title">
                     <i class="bi bi-credit-card me-2"></i>
-                    Xử lý thanh toán
+                    Xử lý thanh toán - Home4U
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
@@ -508,8 +611,324 @@
     </div>
 </div>
 
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h6 class="text-white mb-0">
+                    <i class="bi bi-house-heart text-warning me-2"></i>
+                    Home4U
+                </h6>
+                <small class="text-light" style="opacity: 0.8;">Hệ thống quản lý cho thuê phòng trọ</small>
+            </div>
+            <div class="col-md-6 text-end">
+                <small class="text-light" style="opacity: 0.7;">&copy; 2025 Home4U. Tất cả quyền được bảo lưu.</small>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./js/api.js"></script>
 <script src="./js/invoice.js"></script>
+
+<script>
+// Quick filter functions
+function filterByStatus(status) {
+    document.getElementById('statusFilter').value = status;
+    if (typeof loadInvoices === 'function') {
+        loadInvoices();
+    }
+}
+
+function clearAllFilters() {
+    document.getElementById('statusFilter').value = '';
+    document.getElementById('monthFilter').value = '';
+    document.getElementById('yearFilter').value = '';
+    document.getElementById('searchInput').value = '';
+    if (typeof loadInvoices === 'function') {
+        loadInvoices();
+    }
+}
+
+// Initialize page when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current date as default
+    const today = new Date();
+    const todayString = today.toISOString().split('T')[0];
+    
+    // Set default dates for invoice creation
+    const issueDateInput = document.getElementById('issueDate');
+    const dueDateInput = document.getElementById('dueDate');
+    
+    if (issueDateInput) {
+        issueDateInput.value = todayString;
+    }
+    
+    if (dueDateInput) {
+        // Set due date to next month
+        const nextMonth = new Date(today);
+        nextMonth.setMonth(nextMonth.getMonth() + 1);
+        dueDateInput.value = nextMonth.toISOString().split('T')[0];
+    }
+    
+    // Set current month for billing
+    const billingMonthSelect = document.getElementById('billingMonth');
+    if (billingMonthSelect) {
+        billingMonthSelect.value = today.getMonth() + 1;
+    }
+    
+    // Add event listeners for real-time calculation
+    const calculationInputs = [
+        'electricityPrevious', 'electricityCurrent',
+        'waterPrevious', 'waterCurrent',
+        'serviceFee', 'internetFee', 'parkingFee', 'otherFees', 'discountAmount'
+    ];
+    
+    calculationInputs.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.addEventListener('input', updateInvoicePreview);
+        }
+    });
+    
+    // Add event listener for room selection
+    const roomSelect = document.getElementById('roomId');
+    if (roomSelect) {
+        roomSelect.addEventListener('change', updateInvoicePreview);
+    }
+    
+    // Load initial data if functions are available
+    if (typeof loadInvoices === 'function') {
+        loadInvoices();
+    }
+    
+    // Load dashboard stats if function is available
+    if (typeof loadDashboardStats === 'function') {
+        loadDashboardStats();
+    }
+});
+
+// Update invoice preview calculation
+function updateInvoicePreview() {
+    const roomSelect = document.getElementById('roomId');
+    const selectedRoom = roomSelect?.options[roomSelect.selectedIndex];
+    
+    if (!selectedRoom?.value) return;
+    
+    // Get room price from data attribute (if available)
+    const monthlyRent = parseFloat(selectedRoom.dataset?.price || 0);
+    
+    // Calculate electricity
+    const electricityPrev = parseFloat(document.getElementById('electricityPrevious')?.value || 0);
+    const electricityCurr = parseFloat(document.getElementById('electricityCurrent')?.value || 0);
+    const electricityUsage = Math.max(0, electricityCurr - electricityPrev);
+    const electricityAmount = electricityUsage * 3500; // Default rate
+    
+    // Calculate water
+    const waterPrev = parseFloat(document.getElementById('waterPrevious')?.value || 0);
+    const waterCurr = parseFloat(document.getElementById('waterCurrent')?.value || 0);
+    const waterUsage = Math.max(0, waterCurr - waterPrev);
+    const waterAmount = waterUsage * 25000; // Default rate
+    
+    // Get service fees
+    const serviceFee = parseFloat(document.getElementById('serviceFee')?.value || 0);
+    const internetFee = parseFloat(document.getElementById('internetFee')?.value || 0);
+    const parkingFee = parseFloat(document.getElementById('parkingFee')?.value || 0);
+    const otherFees = parseFloat(document.getElementById('otherFees')?.value || 0);
+    const discountAmount = parseFloat(document.getElementById('discountAmount')?.value || 0);
+    
+    const totalServiceFees = serviceFee + internetFee + parkingFee + otherFees;
+    const total = monthlyRent + electricityAmount + waterAmount + totalServiceFees - discountAmount;
+    
+    // Update preview elements
+    updateElement('previewRent', formatCurrency(monthlyRent));
+    updateElement('previewElectricity', formatCurrency(electricityAmount));
+    updateElement('previewWater', formatCurrency(waterAmount));
+    updateElement('previewService', formatCurrency(totalServiceFees));
+    updateElement('previewDiscount', formatCurrency(discountAmount));
+    updateElement('previewTotal', formatCurrency(total));
+}
+
+// Helper function to update element text content
+function updateElement(id, value) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.textContent = value;
+    }
+}
+
+// Format currency helper function
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    }).format(amount || 0);
+}
+
+// Handle form submissions
+document.getElementById('createInvoiceForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Collect form data
+    const formData = {
+        customerId: parseInt(document.getElementById('customerId').value),
+        roomId: parseInt(document.getElementById('roomId').value),
+        billingPeriodMonth: parseInt(document.getElementById('billingMonth').value),
+        billingPeriodYear: parseInt(document.getElementById('billingYear').value),
+        issueDate: document.getElementById('issueDate').value,
+        dueDate: document.getElementById('dueDate').value,
+        electricityPreviousReading: parseFloat(document.getElementById('electricityPrevious').value || 0),
+        electricityCurrentReading: parseFloat(document.getElementById('electricityCurrent').value || 0),
+        waterPreviousReading: parseFloat(document.getElementById('waterPrevious').value || 0),
+        waterCurrentReading: parseFloat(document.getElementById('waterCurrent').value || 0),
+        serviceFee: parseFloat(document.getElementById('serviceFee').value || 0),
+        internetFee: parseFloat(document.getElementById('internetFee').value || 0),
+        parkingFee: parseFloat(document.getElementById('parkingFee').value || 0),
+        otherFees: parseFloat(document.getElementById('otherFees').value || 0),
+        discountAmount: parseFloat(document.getElementById('discountAmount').value || 0),
+        notes: document.getElementById('invoiceNotes').value
+    };
+    
+    // Call API to create invoice (if function exists)
+    if (typeof API !== 'undefined' && API.createInvoice) {
+        const submitBtn = document.querySelector('#createInvoiceForm button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Đang tạo...';
+        submitBtn.disabled = true;
+        
+        API.createInvoice(formData)
+            .then(response => {
+                showAlert('Tạo hóa đơn thành công!', 'success');
+                
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('createInvoiceModal'));
+                if (modal) modal.hide();
+                
+                // Reset form
+                document.getElementById('createInvoiceForm').reset();
+                
+                // Reload data
+                if (typeof loadInvoices === 'function') {
+                    loadInvoices();
+                }
+                if (typeof loadDashboardStats === 'function') {
+                    loadDashboardStats();
+                }
+            })
+            .catch(error => {
+                console.error('Error creating invoice:', error);
+                showAlert('Lỗi khi tạo hóa đơn: ' + error.message, 'danger');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+    } else {
+        console.log('Invoice creation data:', formData);
+        showAlert('Demo: Dữ liệu hóa đơn đã được tạo (xem console)', 'info');
+    }
+});
+
+// Payment form handler
+document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const paymentData = {
+        invoiceId: parseInt(document.getElementById('paymentInvoiceId').value),
+        amountPaid: parseFloat(document.getElementById('amountPaid').value),
+        paymentMethod: document.getElementById('paymentMethod').value,
+        referenceNumber: document.getElementById('referenceNumber').value,
+        notes: document.getElementById('paymentNotes').value,
+        createdBy: 'admin'
+    };
+    
+    // Call API to process payment (if function exists)
+    if (typeof API !== 'undefined' && API.processPayment) {
+        const submitBtn = document.querySelector('#paymentForm button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Đang xử lý...';
+        submitBtn.disabled = true;
+        
+        API.processPayment(paymentData)
+            .then(response => {
+                showAlert('Thanh toán thành công!', 'success');
+                
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
+                if (modal) modal.hide();
+                
+                // Reset form
+                document.getElementById('paymentForm').reset();
+                
+                // Reload data
+                if (typeof loadInvoices === 'function') {
+                    loadInvoices();
+                }
+                if (typeof loadDashboardStats === 'function') {
+                    loadDashboardStats();
+                }
+            })
+            .catch(error => {
+                console.error('Error processing payment:', error);
+                showAlert('Lỗi khi xử lý thanh toán: ' + error.message, 'danger');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+    } else {
+        console.log('Payment data:', paymentData);
+        showAlert('Demo: Dữ liệu thanh toán đã được xử lý (xem console)', 'info');
+    }
+});
+
+// Show alert function
+function showAlert(message, type = 'info') {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+    alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+    document.body.appendChild(alertDiv);
+
+    setTimeout(() => {
+        if (alertDiv.parentNode) {
+            alertDiv.remove();
+        }
+    }, 5000);
+}
+
+// Global functions for view invoice detail and payment
+window.viewInvoiceDetail = function(invoiceId) {
+    console.log('View invoice detail:', invoiceId);
+    // Implementation would go here when API is available
+    showAlert('Tính năng xem chi tiết hóa đơn đang được phát triển', 'info');
+};
+
+window.showPaymentModal = function(invoiceId) {
+    console.log('Show payment modal for invoice:', invoiceId);
+    document.getElementById('paymentInvoiceId').value = invoiceId;
+    
+    const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
+    modal.show();
+};
+
+window.updateInvoiceStatus = function(invoiceId, newStatus) {
+    if (!confirm(`Bạn có chắc chắn muốn ${newStatus === 'CANCELLED' ? 'hủy' : 'cập nhật'} hóa đơn này?`)) {
+        return;
+    }
+    
+    console.log('Update invoice status:', invoiceId, newStatus);
+    // Implementation would go here when API is available
+    showAlert('Tính năng cập nhật trạng thái đang được phát triển', 'info');
+};
+</script>
 </body>
 </html>

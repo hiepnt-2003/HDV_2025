@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống Quản lý Thuê phòng</title>
+    <title>Home4U - Hệ thống Quản lý Cho thuê Phòng trọ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/common-styles.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#" style="color: var(--primary-color);">
-            <i class="bi bi-building me-2"></i>
-            Rental Management
+        <a class="navbar-brand brand-logo" href="#">
+            <i class="bi bi-house-heart"></i>
+            Home4U
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -48,36 +49,37 @@
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="container">
-        <h1 class="display-4 fw-bold mb-4">Tìm phòng trọ lý tưởng của bạn</h1>
-        <p class="lead mb-5">Hệ thống quản lý cho thuê phòng trọ hiện đại, tiện lợi và đáng tin cậy</p>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="stats-section">
-                    <div class="row">
-                        <div class="col-md-3 col-6">
-                            <div class="stat-card">
-                                <div class="stat-number" id="totalRooms">0</div>
-                                <div class="text-muted">Tổng phòng</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <div class="stat-card">
-                                <div class="stat-number" id="availableRooms">0</div>
-                                <div class="text-muted">Phòng trống</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <div class="stat-card">
-                                <div class="stat-number" id="occupiedRooms">0</div>
-                                <div class="text-muted">Đang thuê</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <div class="stat-card">
-                                <div class="stat-number" id="bookedRooms">0</div>
-                                <div class="text-muted">Đã đặt</div>
-                            </div>
-                        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="bi bi-house-heart text-warning me-3"></i>
+                    Chào mừng đến với Home4U
+                </h1>
+                <p class="lead mb-5">Hệ thống quản lý cho thuê phòng trọ hiện đại, tiện lợi và đáng tin cậy. Tìm kiếm ngôi nhà thứ hai hoàn hảo của bạn.</p>
+                <div class="d-flex gap-3 mb-4">
+                    <button class="btn btn-warning btn-lg px-4" onclick="scrollToRooms()">
+                        <i class="bi bi-search me-2"></i>
+                        Tìm phòng ngay
+                    </button>
+                    <button class="btn btn-outline-light btn-lg px-4" onclick="scrollToAbout()">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Tìm hiểu thêm
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image">
+                    <div class="floating-card">
+                        <i class="bi bi-house-door text-primary"></i>
+                        <h6>Phòng hiện đại</h6>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <i class="bi bi-wifi text-success"></i>
+                        <h6>Wifi tốc độ cao</h6>
+                    </div>
+                    <div class="floating-card floating-card-3">
+                        <i class="bi bi-shield-check text-warning"></i>
+                        <h6>An ninh 24/7</h6>
                     </div>
                 </div>
             </div>
@@ -85,60 +87,94 @@
     </div>
 </section>
 
-<!-- Filter Section -->
-<section class="container">
-    <div class="filter-section">
-        <h3 class="section-title">
-            <i class="bi bi-funnel me-2"></i>
-            Tìm kiếm & Lọc phòng
-        </h3>
-        <div class="row g-3">
-            <div class="col-md-3">
-                <label class="form-label">Loại phòng</label>
-                <select class="form-select" id="roomTypeFilter">
-                    <option value="">Tất cả loại phòng</option>
-                    <option value="1">Standard</option>
-                    <option value="2">Deluxe</option>
-                    <option value="3">VIP</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Trạng thái</label>
-                <select class="form-select" id="statusFilter">
-                    <option value="">Tất cả trạng thái</option>
-                    <option value="AVAILABLE">Có sẵn</option>
-                    <option value="OCCUPIED">Đang thuê</option>
-                    <option value="BOOKED">Đã đặt</option>
-                    <option value="MAINTENANCE">Bảo trì</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Khoảng giá (VNĐ/tháng)</label>
-                <select class="form-select" id="priceFilter">
-                    <option value="">Tất cả mức giá</option>
-                    <option value="0-3000000">Dưới 3 triệu</option>
-                    <option value="3000000-5000000">3 - 5 triệu</option>
-                    <option value="5000000-7000000">5 - 7 triệu</option>
-                    <option value="7000000-999999999">Trên 7 triệu</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Tìm kiếm</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Số phòng...">
-                    <button class="btn btn-primary" onclick="applyFilters()">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
+<!-- Stats Section -->
+<section class="container my-5">
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div class="stats-number" id="totalRooms">0</div>
+                <div class="stats-label">Tổng phòng</div>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <button class="filter-btn me-2 active" onclick="filterByStatus('all')">Tất cả</button>
-                <button class="filter-btn me-2" onclick="filterByStatus('AVAILABLE')">Có sẵn</button>
-                <button class="filter-btn me-2" onclick="filterByStatus('OCCUPIED')">Đang thuê</button>
-                <button class="filter-btn me-2" onclick="filterByStatus('BOOKED')">Đã đặt</button>
-                <button class="filter-btn" onclick="clearFilters()">Xóa bộ lọc</button>
+        <div class="col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div class="stats-number text-success" id="availableRooms">0</div>
+                <div class="stats-label">Phòng trống</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div class="stats-number text-info" id="occupiedRooms">0</div>
+                <div class="stats-label">Đang thuê</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div class="stats-number text-warning" id="bookedRooms">0</div>
+                <div class="stats-label">Đã đặt</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="container">
+    <div class="card filter-section">
+        <div class="card-header">
+            <h4 class="mb-0">
+                <i class="bi bi-funnel me-2"></i>
+                Tìm kiếm & Lọc phòng
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Loại phòng</label>
+                    <select class="form-select" id="roomTypeFilter">
+                        <option value="">Tất cả loại phòng</option>
+                        <option value="1">Standard</option>
+                        <option value="2">Deluxe</option>
+                        <option value="3">VIP</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Trạng thái</label>
+                    <select class="form-select" id="statusFilter">
+                        <option value="">Tất cả trạng thái</option>
+                        <option value="AVAILABLE">Có sẵn</option>
+                        <option value="OCCUPIED">Đang thuê</option>
+                        <option value="BOOKED">Đã đặt</option>
+                        <option value="MAINTENANCE">Bảo trì</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Khoảng giá (VNĐ/tháng)</label>
+                    <select class="form-select" id="priceFilter">
+                        <option value="">Tất cả mức giá</option>
+                        <option value="0-3000000">Dưới 3 triệu</option>
+                        <option value="3000000-5000000">3 - 5 triệu</option>
+                        <option value="5000000-7000000">5 - 7 triệu</option>
+                        <option value="7000000-999999999">Trên 7 triệu</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Tìm kiếm</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Số phòng...">
+                        <button class="btn btn-primary" onclick="applyFilters()">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button class="filter-btn me-2 active" onclick="filterByStatus('all')">Tất cả</button>
+                    <button class="filter-btn me-2" onclick="filterByStatus('AVAILABLE')">Có sẵn</button>
+                    <button class="filter-btn me-2" onclick="filterByStatus('OCCUPIED')">Đang thuê</button>
+                    <button class="filter-btn me-2" onclick="filterByStatus('BOOKED')">Đã đặt</button>
+                    <button class="filter-btn" onclick="clearFilters()">Xóa bộ lọc</button>
+                </div>
             </div>
         </div>
     </div>
@@ -146,10 +182,13 @@
 
 <!-- Rooms Section -->
 <section class="container my-5" id="rooms">
-    <h2 class="section-title">
-        <i class="bi bi-grid-3x3 me-2"></i>
-        Danh sách phòng
-    </h2>
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold">
+            <i class="bi bi-grid-3x3 me-3 text-primary"></i>
+            Danh sách phòng
+        </h2>
+        <p class="lead text-muted">Khám phá các phòng trọ chất lượng cao với đầy đủ tiện nghi</p>
+    </div>
     <div class="row" id="roomsList">
         <!-- Room cards will be loaded here -->
         <div class="col-12 text-center">
@@ -163,60 +202,158 @@
 
 <!-- Admin Panel -->
 <section class="container my-5" id="adminSection" style="display: none;">
-    <div class="admin-panel">
-        <div class="text-center mb-4">
+    <div class="card admin-panel">
+        <div class="card-header text-center">
             <h3>
                 <i class="bi bi-shield-check me-2"></i>
-                Bảng điều khiển Admin
+                Bảng điều khiển Admin - Home4U
             </h3>
             <p class="mb-0">Chào mừng bạn đến với hệ thống quản lý</p>
         </div>
+        <div class="card-body">
+            <div class="admin-menu">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="admin-card" onclick="window.location.href='checkin.html'">
+                            <div class="mb-3">
+                                <i class="bi bi-box-arrow-in-right" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>Nhận phòng</h5>
+                            <p class="small">Quản lý check-in và đặt phòng</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="admin-card" onclick="window.location.href='invoice.html'">
+                            <div class="mb-3">
+                                <i class="bi bi-receipt" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>Hóa đơn</h5>
+                            <p class="small">Quản lý thanh toán và hóa đơn</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="admin-card" onclick="window.location.href='customers.html'">
+                            <div class="mb-3">
+                                <i class="bi bi-people" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>Quản lý khách hàng</h5>
+                            <p class="small">Thông tin khách thuê phòng</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="admin-card" onclick="window.location.href='rooms-management.html'">
+                            <div class="mb-3">
+                                <i class="bi bi-building" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5>Quản lý phòng</h5>
+                            <p class="small">Cập nhật thông tin phòng</p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="admin-menu">
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-light" onclick="logout()">
+                        <i class="bi bi-box-arrow-right me-1"></i>
+                        Đăng xuất
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="container my-5" id="about">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h2 class="display-5 fw-bold mb-4">Về Home4U</h2>
+            <p class="lead mb-4">Home4U là nền tảng cho thuê phòng trọ hàng đầu, cam kết mang đến cho bạn những trải nghiệm tuyệt vời nhất.</p>
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="admin-card" onclick="window.location.href='checkin.html'">
-                        <div class="mb-3">
-                            <i class="bi bi-box-arrow-in-right" style="font-size: 2.5rem;"></i>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                        <div>
+                            <h6 class="fw-bold">Chất lượng đảm bảo</h6>
+                            <p class="small text-muted">Tất cả phòng đều được kiểm tra kỹ lưỡng</p>
                         </div>
-                        <h5>Nhận phòng</h5>
-                        <p class="small">Quản lý check-in và đặt phòng</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="admin-card" onclick="window.location.href='invoice.html'">
-                        <div class="mb-3">
-                            <i class="bi bi-receipt" style="font-size: 2.5rem;"></i>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-headset text-primary me-3 fs-4"></i>
+                        <div>
+                            <h6 class="fw-bold">Hỗ trợ 24/7</h6>
+                            <p class="small text-muted">Đội ngũ chăm sóc khách hàng luôn sẵn sàng</p>
                         </div>
-                        <h5>Hóa đơn</h5>
-                        <p class="small">Quản lý thanh toán và hóa đơn</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="admin-card" onclick="window.location.href='customers.html'">
-                        <div class="mb-3">
-                            <i class="bi bi-people" style="font-size: 2.5rem;"></i>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-shield-check text-warning me-3 fs-4"></i>
+                        <div>
+                            <h6 class="fw-bold">An toàn bảo mật</h6>
+                            <p class="small text-muted">Thông tin được bảo vệ tuyệt đối</p>
                         </div>
-                        <h5>Quản lý khách hàng</h5>
-                        <p class="small">Thông tin khách thuê phòng</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="admin-card" onclick="window.location.href='rooms-management.html'">
-                        <div class="mb-3">
-                            <i class="bi bi-building" style="font-size: 2.5rem;"></i>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-lightning-charge text-danger me-3 fs-4"></i>
+                        <div>
+                            <h6 class="fw-bold">Nhanh chóng</h6>
+                            <p class="small text-muted">Quy trình đặt phòng đơn giản, nhanh gọn</p>
                         </div>
-                        <h5>Quản lý phòng</h5>
-                        <p class="small">Cập nhật thông tin phòng</p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="about-image">
+                <div class="stats-overlay">
+                    <div class="stat-item">
+                        <h3>1000+</h3>
+                        <p>Khách hàng hài lòng</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Phòng chất lượng</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Hỗ trợ khách hàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <div class="text-center mt-4">
-                <button class="btn btn-outline-light" onclick="logout()">
-                    <i class="bi bi-box-arrow-right me-1"></i>
-                    Đăng xuất
-                </button>
+<!-- Contact Section -->
+<section class="container my-5" id="contact">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold">Liên hệ với Home4U</h2>
+        <p class="lead text-muted">Chúng tôi luôn sẵn sàng hỗ trợ bạn</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="contact-card text-center">
+                <i class="bi bi-geo-alt-fill text-primary mb-3"></i>
+                <h5>Địa chỉ</h5>
+                <p class="text-muted">123 Đường ABC, Quận XYZ<br>Thành phố Hà Nội</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="contact-card text-center">
+                <i class="bi bi-telephone-fill text-success mb-3"></i>
+                <h5>Điện thoại</h5>
+                <p class="text-muted">Hotline: 1900-1234<br>Di động: 0123-456-789</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="contact-card text-center">
+                <i class="bi bi-envelope-fill text-warning mb-3"></i>
+                <h5>Email</h5>
+                <p class="text-muted">info@home4u.vn<br>support@home4u.vn</p>
             </div>
         </div>
     </div>
@@ -229,7 +366,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">
                     <i class="bi bi-shield-lock me-2"></i>
-                    Đăng nhập Admin
+                    Đăng nhập Admin - Home4U
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
@@ -238,18 +375,18 @@
                     <div class="mb-3">
                         <label class="form-label">Tên đăng nhập</label>
                         <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-person"></i>
-                                </span>
+                            <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                            </span>
                             <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Mật khẩu</label>
                         <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-lock"></i>
-                                </span>
+                            <span class="input-group-text">
+                                <i class="bi bi-lock"></i>
+                            </span>
                             <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" required>
                             <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
                                 <i class="bi bi-eye" id="togglePasswordIcon"></i>
@@ -284,8 +421,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Chi tiết phòng</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title">Chi tiết phòng - Home4U</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body" id="roomDetailContent">
                 <!-- Content will be loaded here -->
@@ -308,7 +445,7 @@
             <div class="modal-header bg-success text-white">
                 <h5 class="modal-title">
                     <i class="bi bi-calendar-check me-2"></i>
-                    Đặt phòng
+                    Đặt phòng - Home4U
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
@@ -427,9 +564,72 @@
     <i class="bi bi-arrow-up"></i>
 </button>
 
+<!-- Footer -->
+<footer class="bg-dark text-white py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5 class="text-white mb-3">
+                    <i class="bi bi-house-heart text-warning me-2"></i>
+                    Home4U
+                </h5>
+                <p class="text-light opacity-75">Nền tảng cho thuê phòng trọ hàng đầu Việt Nam. Chúng tôi cam kết mang đến cho bạn những trải nghiệm tuyệt vời nhất.</p>
+                <div class="social-links">
+                    <a href="#" class="text-white me-3" style="opacity: 0.8;"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3" style="opacity: 0.8;"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-3" style="opacity: 0.8;"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white" style="opacity: 0.8;"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h6 class="text-white mb-3">Liên kết</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none" style="opacity: 0.8;">Trang chủ</a></li>
+                    <li class="mb-2"><a href="#rooms" class="text-light text-decoration-none" style="opacity: 0.8;">Phòng trọ</a></li>
+                    <li class="mb-2"><a href="#about" class="text-light text-decoration-none" style="opacity: 0.8;">Về chúng tôi</a></li>
+                    <li class="mb-2"><a href="#contact" class="text-light text-decoration-none" style="opacity: 0.8;">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h6 class="text-white mb-3">Dịch vụ</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none" style="opacity: 0.8;">Thuê phòng</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none" style="opacity: 0.8;">Đặt phòng online</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none" style="opacity: 0.8;">Hỗ trợ khách hàng</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none" style="opacity: 0.8;">Thanh toán online</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h6 class="text-white mb-3">Liên hệ</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2 text-light" style="opacity: 0.8;">
+                        <i class="bi bi-geo-alt me-2 text-warning"></i>123 Đường ABC, Hà Nội
+                    </li>
+                    <li class="mb-2 text-light" style="opacity: 0.8;">
+                        <i class="bi bi-telephone me-2 text-warning"></i>1900-1234
+                    </li>
+                    <li class="mb-2 text-light" style="opacity: 0.8;">
+                        <i class="bi bi-envelope me-2 text-warning"></i>info@home4u.vn
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-4 border-secondary">
+        <div class="text-center">
+            <p class="mb-0 text-light" style="opacity: 0.7;">&copy; 2025 Home4U. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </div>
+</footer>
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./js/api.js"></script>
 <script src="./js/index.js"></script>
+<script>
+// Additional functions for new sections
+function scrollToAbout() {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
